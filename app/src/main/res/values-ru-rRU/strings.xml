@@ -6,4 +6,25 @@
     <string name="auth_Button_login">Войти</string>
     <string name="auth_TextView_haveNotRegisteredYet">Ещё не зарегистрированы?</string>
     <string name="auth_TextView_register">Зарегистрироваться</string>
+    <string name="registration_TextView_title">Регистрация</string>
+    <string name="registration_TextView_username">Логин</string>
+    <string name="TextView_email">Email</string>
+    <string name="registration_TextView_repeatPassword">Повторите пароль</string>
+    <string name="registration_Button_register">Зарегистрироваться</string>
+    <string name="registration_TextView_haveAlreadyRegistered">Уже зарегистрированы?</string>
+    <string name="registration_TextView_logIn">Войти</string>
+
+    <string name="login_TextView_title">Авторизация</string>
+    <string name="login_Button_login">Войти</string>
+    <string name="login_TextView_haveNotRegisteredYet">Ещё не зарегистрированы?</string>
+    <string name="app_name">Flicksbox</string>
+    <string name="user_name">Имя</string>
+    <string name="email">Почта</string>
+    <string name="old_password">Старый пароль</string>
+    <string name="new_password">Новый пароль</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="save_changes">Сохранить изменения</string>
+    <string name="subscription">Подписка</string>
+    <string name="subscription_status">Статус</string>
+    <string name="subscribe">Подписаться</string>
 </resources>
