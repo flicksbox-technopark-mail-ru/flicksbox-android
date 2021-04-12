@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="TextView_password">Пароль</string>
+
+    <string name="auth_TextView_title">Авторизация</string>
+    <string name="auth_Button_login">Войти</string>
+    <string name="auth_TextView_haveNotRegisteredYet">Ещё не зарегистрированы?</string>
+    <string name="auth_TextView_register">Зарегистрироваться</string>
+</resources>
