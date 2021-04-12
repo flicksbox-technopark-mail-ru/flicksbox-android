@@ -1,3 +1,4 @@
+
 <resources>
     <string name="app_name" translatable="false">Flicksbox</string>
     <string name="textview_email" translatable="false">Email</string>
@@ -15,7 +16,6 @@
     <string name="subscription">Subscription</string>
     <string name="subscription_status">Status</string>
     <string name="subscribe">Subscribe</string>
-
     <string name="registration_TextView_title">Registration</string>
     <string name="registration_TextView_username">Login</string>
     <string name="registration_TextView_repeatPassword">Repeat password</string>
@@ -28,9 +28,4 @@
     <string name="auth_required_fields_empty_error">Required fields are empty</string>
     <string name="unknown_server_error">Unknown server error</string>
     <string name="auth_email_incorrect_error">Email is incorrect</string>
-
-    <string name="auth_Required_Fields_Empty_Error">Required fields are empty</string>
-    <string name="unknown_Server_Error">Unknown server error</string>
-    <string name="auth_Email_Incorrect_Error">Email is incorrect</string>
-
 </resources>
