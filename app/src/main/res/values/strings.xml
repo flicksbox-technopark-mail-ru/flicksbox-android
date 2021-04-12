@@ -1,11 +1,18 @@
 <resources>
     <string name="app_name" translatable="false">Flicksbox</string>
-
     <string name="TextView_email" translatable="false">Email</string>
     <string name="TextView_password">Password</string>
-
     <string name="auth_TextView_title">Auth</string>
     <string name="auth_Button_login">Log In</string>
     <string name="auth_TextView_haveNotRegisteredYet">Have not registered yet?</string>
     <string name="auth_TextView_register">Registration</string>
+    <string name="user_name">Name</string>
+    <string name="email">Email</string>
+    <string name="old_password">Old password</string>
+    <string name="new_password">New password</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="save_changes">Save changes</string>
+    <string name="subscription">Subscription</string>
+    <string name="subscription_status">Status</string>
+    <string name="subscribe">Subscribe</string>
 </resources>
