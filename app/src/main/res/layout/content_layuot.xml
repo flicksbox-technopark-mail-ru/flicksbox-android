@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_view_wrapper"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/content_header_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/main"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/content_poster"
+                    android:layout_width="wrap_content"
+                    android:layout_height="300dp"
+                    android:contentDescription="@string/content_title_en"
+                    android:src="@drawable/pulpfiction_large"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/content_header_wrapper"
+                    app:layout_constraintTop_toTopOf="@+id/content_header_wrapper" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:foreground="@drawable/content_gradient"
+                    app:layout_constraintBottom_toBottomOf="@+id/content_poster"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/content_title_ru"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="40dp"
+                    android:text="@string/content_title_ru"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_l"
+                    app:layout_constraintBottom_toBottomOf="@+id/content_poster" />
+
+                <TextView
+                    android:id="@+id/content_title_en"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/content_title_en"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_m"
+                    app:layout_constraintTop_toBottomOf="@+id/content_title_ru" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/content_info_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/main"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/content_header_wrapper">
+
+                <LinearLayout
+                    android:id="@+id/content_labels_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="@+id/content_info_wrapper"
+                    app:layout_constraintTop_toTopOf="@+id/content_info_wrapper">
+
+                    <TextView
+                        android:id="@+id/content_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/content_rating"
+                        android:textAlignment="center"
+                        android:textColor="@color/rating_green"
+                        android:textSize="@dimen/font_s" />
+
+                    <TextView
+                        android:id="@+id/content_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/content_year"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_s" />
+
+                    <TextView
+                        android:id="@+id/content_country"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/content_country"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_s" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/content_wrapper_genres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toEndOf="@+id/content_labels_wrapper"
+                    app:layout_constraintTop_toBottomOf="@+id/content_labels_wrapper">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/genres_lbl"
+                        android:textColor="@color/labels_gray"
+                        android:textSize="@dimen/font_s"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/content_info_genres"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/content_genre"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_s"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/content_wrapper_directors"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toEndOf="@+id/content_wrapper_genres"
+                    app:layout_constraintTop_toBottomOf="@+id/content_wrapper_genres">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/directors_lbl"
+                        android:textColor="@color/labels_gray"
+                        android:textSize="@dimen/font_s"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/content_info_directors"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/directors"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_s"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/content_wrapper_cast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toEndOf="@+id/content_wrapper_directors"
+                    app:layout_constraintTop_toBottomOf="@+id/content_wrapper_directors">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/cast_lbl"
+                        android:textColor="@color/labels_gray"
+                        android:textSize="@dimen/font_s"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/content_info_cast"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/full_cast"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_s"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/content_wrapper_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toEndOf="@+id/content_wrapper_cast"
+                    app:layout_constraintTop_toBottomOf="@+id/content_wrapper_cast">
+
+                    <TextView
+                        android:id="@+id/content_info_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/short_desc"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_s"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/content_wrapper_similar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="60dp"
+                android:orientation="vertical">
+            <TextView
+                android:id="@+id/content_similar_lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="15dp"
+                android:text="@string/similar"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_s" />
+
+            <include layout="@layout/cards_grid_layout" />
+        </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/cards_buttons_layout" />
+
+</RelativeLayout>
