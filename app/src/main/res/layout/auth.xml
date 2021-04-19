@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:text="@string/auth_TextView_title" />
+        <TextView
+            android:id="@+id/auth_TextView_email"
+            android:labelFor="@id/auth_EditText_email"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/TextView_email" />
+        <EditText
+            android:id="@+id/auth_EditText_email"
+            android:inputType="textEmailAddress"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:autofillHints="" />
+        <TextView
+            android:id="@+id/auth_TextView_password"
+            android:labelFor="@id/auth_EditText_password"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/TextView_password" />
+        <EditText
+            android:id="@+id/auth_EditText_password"
+            android:inputType="textPassword"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:autofillHints="" />
+        <Button
+            android:gravity="center"
+            android:id="@+id/auth_Button_login"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/auth_Button_login" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:text="@string/auth_TextView_haveNotRegisteredYet" />
+        <TextView
+            android:id="@+id/auth_TextView_register"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:text="@string/auth_TextView_register" />
+    </LinearLayout>
+</ScrollView>
