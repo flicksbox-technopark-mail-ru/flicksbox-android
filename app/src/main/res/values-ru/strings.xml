@@ -10,6 +10,7 @@
     <string name="subscription">Подписка</string>
     <string name="subscription_status">Статус</string>
     <string name="subscribe">Подписаться</string>
+
     <string name="textview_password">Пароль</string>
     <string name="auth_textview_title">Авторизация</string>
     <string name="auth_button_login">Войти</string>
@@ -18,4 +19,9 @@
     <string name="auth_required_fields_empty_error">Обязательные поля не заполнены</string>
     <string name="unknown_server_error">Неизвестная ошибка сервера</string>
     <string name="auth_email_incorrect_error">Некорректный email</string>
+
+    <string name="auth_Required_Fields_Empty_Error">Обязательные поля не заполнены</string>
+    <string name="unknown_Server_Error">Неизвестная ошибка сервера</string>
+    <string name="auth_Email_Incorrect_Error">Некорректный email</string>
+
 </resources>

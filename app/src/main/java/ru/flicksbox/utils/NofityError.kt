@@ -14,4 +14,3 @@ fun notifyError(t: Throwable, context: Context) {
 
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }
-
