@@ -23,6 +23,8 @@ class NetworkServiceFactoryImpl : NetworkServiceFactory {
     private val okHttpClient: OkHttpClient by lazy {
         OkHttpClient.Builder()
             .addInterceptor(errorInterceptor)
+            .addInterceptor(cookieCacherInterceptor)
+            .addInterceptor(cookieSetterInterceptor)
             .addInterceptor(loggingInterceptor)
             .build()
     }
@@ -33,6 +35,14 @@ class NetworkServiceFactoryImpl : NetworkServiceFactory {
 
     private val converterFactory: Converter.Factory by lazy {
         GsonConverterFactory.create(gson)
+    }
+
+    private val cookieCacherInterceptor: CookieCacherInterceptor by lazy {
+        CookieCacherInterceptor()
+    }
+
+    private val cookieSetterInterceptor: CookieSetterInterceptor by lazy {
+        CookieSetterInterceptor()
     }
 
     private val loggingInterceptor: HttpLoggingInterceptor by lazy {

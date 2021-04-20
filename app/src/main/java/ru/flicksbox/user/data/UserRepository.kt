@@ -9,8 +9,18 @@ import ru.flicksbox.user.domain.UserRepository
 class UserRepositoryImpl(
     private val userService: UserService,
 ) : UserRepository {
-    override fun getUser(cookie: String): Flow<Data<UserEntity>> =
-        flow { emit(userService.getUser(cookie)) }
+    override fun getUser(): Flow<Data<UserEntity>> =
+        flow { emit(userService.getUser()) }
+            .map { user ->
+                val body = user.body ?: throw ApiNotRespondingError()
+                body.toDomain()
+            }
+            .map { Data.content(it) }
+            .onStart { emit(Data.loading()) }
+            .catch { emit(Data.error(it)) }
+
+    override fun login(email: String, password: String): Flow<Data<UserEntity>> =
+        flow { emit(userService.login(LoginBody(email, password))) }
             .map { user ->
                 val body = user.body ?: throw ApiNotRespondingError()
                 body.toDomain()

@@ -1,12 +1,16 @@
 package ru.flicksbox.user.data
 
-import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.POST
 import ru.flicksbox.network.BaseDTO
 
 interface UserService {
 
     @GET("user/profile")
-    suspend fun getUser(@Header("cookie") cookie: String): BaseDTO<UserWrapperDTO>
+    suspend fun getUser(): BaseDTO<UserWrapperDTO>
+
+    @POST("session")
+    suspend fun login(@Body login: LoginBody): BaseDTO<UserWrapperDTO>
 }

@@ -4,5 +4,6 @@ import kotlinx.coroutines.flow.Flow
 import ru.flicksbox.data.Data
 
 interface UserRepository {
-    fun getUser(cookie: String): Flow<Data<UserEntity>>
+    fun getUser(): Flow<Data<UserEntity>>
+    fun login(email: String, password: String): Flow<Data<UserEntity>>
 }
