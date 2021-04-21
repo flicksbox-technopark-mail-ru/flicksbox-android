@@ -1,31 +1,22 @@
 package ru.flicksbox.user.domain
 
+import android.util.Patterns
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import ru.flicksbox.App
-import ru.flicksbox.R
-import ru.flicksbox.data.AppError
+import ru.flicksbox.data.ApplicationException
 import ru.flicksbox.data.Data
 import ru.flicksbox.user.presentation.UserInteractor
-
-const val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+import ru.flicksbox.utils.EMAIL_INCORRECT_ERROR
+import ru.flicksbox.utils.FIELDS_ARE_EMPTY_ERROR
 
 class UserInteractorImpl(private val userRepository: UserRepository) : UserInteractor {
-    private val emailRegex: Regex by lazy {
-        Regex(emailPattern)
-    }
-
     override fun login(email: String, password: String): Flow<Data<UserEntity>> {
         if (email.isEmpty() || password.isEmpty()) {
-            val errorMessage =
-                App.appContext().resources.getString(R.string.auth_Required_Fields_Empty_Error)
-            return flow { emit(Data.error(AppError(errorMessage))) }
+            return flow { emit(Data.error(ApplicationException(FIELDS_ARE_EMPTY_ERROR))) }
         }
 
-        if (!email.matches(emailRegex)) {
-            val errorMessage =
-                App.appContext().resources.getString(R.string.auth_Email_Incorrect_Error)
-            return flow { emit(Data.error(AppError(errorMessage))) }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            return flow { emit(Data.error(ApplicationException(EMAIL_INCORRECT_ERROR))) }
         }
 
         return userRepository.login(email, password)

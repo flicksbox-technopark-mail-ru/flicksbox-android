@@ -1,15 +1,12 @@
 package ru.flicksbox.network
 
-import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
-import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.math.log
 
 interface NetworkServiceFactory {
     fun <T> createService(clazz: Class<T>): T

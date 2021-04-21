@@ -26,6 +26,8 @@ class CookieCacherInterceptor : Interceptor {
     }
 
     private fun parseCookie(cookie: List<String>): String {
+        //cookie is presented by 1 string containing many separated by ";" keys and values,
+        //so we need to take the first one, containing auth token
         return cookie[0].substring(0, cookie[0].indexOf(';'))
     }
 }

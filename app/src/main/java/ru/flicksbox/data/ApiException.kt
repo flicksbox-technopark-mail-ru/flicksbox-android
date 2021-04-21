@@ -2,13 +2,13 @@ package ru.flicksbox.data
 
 import java.io.IOException
 
-data class ApiError(
+data class ApiException(
     val code: Int,
     val apiMessage: String,
     val userMessage: String,
 ) : IOException()
 
-fun ApiNotRespondingError(): ApiError = ApiError(
+fun ApiNotRespondingException(): ApiException = ApiException(
     500,
     "service not responding",
     "Service not available",

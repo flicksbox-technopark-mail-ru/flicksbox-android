@@ -1,7 +1,7 @@
 package ru.flicksbox.movie.data
 
 import kotlinx.coroutines.flow.*
-import ru.flicksbox.data.ApiNotRespondingError
+import ru.flicksbox.data.ApiNotRespondingException
 import ru.flicksbox.data.Data
 import ru.flicksbox.movie.domain.*
 
@@ -11,7 +11,7 @@ class MovieRepositoryImpl(
     override fun getTopMovies(count: Int, from: Int): Flow<Data<List<MovieEntity>>> =
         flow { emit(movieService.getTopMovies(count, from)) }
             .map { movies ->
-                val body = movies.body ?: throw ApiNotRespondingError()
+                val body = movies.body ?: throw ApiNotRespondingException()
                 body.movies.map { it.toDomain() }
             }
             .map { Data.content(it) }

@@ -11,13 +11,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:text="@string/auth_TextView_title" />
+            android:text="@string/auth_textview_title" />
         <TextView
             android:id="@+id/auth_TextView_email"
             android:labelFor="@id/auth_EditText_email"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="@string/TextView_email" />
+            android:text="@string/textview_email" />
         <EditText
             android:id="@+id/auth_EditText_email"
             android:inputType="textEmailAddress"
@@ -29,7 +29,7 @@
             android:labelFor="@id/auth_EditText_password"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="@string/TextView_password" />
+            android:text="@string/textview_password" />
         <EditText
             android:id="@+id/auth_EditText_password"
             android:inputType="textPassword"
@@ -41,17 +41,17 @@
             android:id="@+id/auth_Button_login"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="@string/auth_Button_login" />
+            android:text="@string/auth_button_login" />
         <TextView
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:text="@string/auth_TextView_haveNotRegisteredYet" />
+            android:text="@string/auth_textview_have_not_registered_yet" />
         <TextView
             android:id="@+id/auth_TextView_register"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:text="@string/auth_TextView_register" />
+            android:text="@string/auth_textview_register" />
     </LinearLayout>
 </ScrollView>
