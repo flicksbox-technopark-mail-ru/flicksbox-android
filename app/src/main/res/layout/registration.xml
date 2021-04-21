@@ -29,7 +29,7 @@
             android:labelFor="@id/registration_EditText_email"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="@string/TextView_email" />
+            android:text="@string/textview_email" />
         <EditText
             android:id="@+id/registration_EditText_email"
             android:inputType="textEmailAddress"
@@ -41,7 +41,7 @@
             android:labelFor="@id/registration_EditText_password"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="@string/TextView_password" />
+            android:text="@string/textview_password" />
         <EditText
             android:id="@+id/registration_EditText_password"
             android:inputType="textPassword"

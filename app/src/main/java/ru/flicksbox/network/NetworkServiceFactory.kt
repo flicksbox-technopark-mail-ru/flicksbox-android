@@ -1,15 +1,12 @@
 package ru.flicksbox.network
 
-import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
-import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.math.log
 
 interface NetworkServiceFactory {
     fun <T> createService(clazz: Class<T>): T
@@ -23,6 +20,8 @@ class NetworkServiceFactoryImpl : NetworkServiceFactory {
     private val okHttpClient: OkHttpClient by lazy {
         OkHttpClient.Builder()
             .addInterceptor(errorInterceptor)
+            .addInterceptor(cookieCacherInterceptor)
+            .addInterceptor(cookieSetterInterceptor)
             .addInterceptor(loggingInterceptor)
             .build()
     }
@@ -33,6 +32,14 @@ class NetworkServiceFactoryImpl : NetworkServiceFactory {
 
     private val converterFactory: Converter.Factory by lazy {
         GsonConverterFactory.create(gson)
+    }
+
+    private val cookieCacherInterceptor: CookieCacherInterceptor by lazy {
+        CookieCacherInterceptor()
+    }
+
+    private val cookieSetterInterceptor: CookieSetterInterceptor by lazy {
+        CookieSetterInterceptor()
     }
 
     private val loggingInterceptor: HttpLoggingInterceptor by lazy {
