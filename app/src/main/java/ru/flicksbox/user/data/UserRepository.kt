@@ -28,6 +28,23 @@ class UserRepositoryImpl(
             .map { Data.content(it) }
             .onStart { emit(Data.loading()) }
             .catch { emit(Data.error(it)) }
+
+    override fun signup(
+        username: String,
+        email: String,
+        password: String,
+        repeated_password: String
+    ): Flow<Data<UserEntity>> =
+        flow { emit(userService.signup(SignupBody(username, email, password, repeated_password))) }
+            .map { user ->
+                val body = user.body ?: throw ApiNotRespondingError()
+                body.toDomain()
+            }
+            .map {
+                Data.content(it) }
+            .onStart {
+                emit(Data.loading()) }
+            .catch { emit(Data.error(it)) }
 }
 
 private fun UserWrapperDTO.toDomain(): UserEntity =

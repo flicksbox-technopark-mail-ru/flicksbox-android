@@ -25,4 +25,37 @@ class UserInteractorImpl(private val userRepository: UserRepository) : UserInter
     override fun getUser(): Flow<Data<UserEntity>> {
         return userRepository.getUser()
     }
+
+    override fun signup(
+        username: String,
+        email: String,
+        password: String,
+        repeated_password: String
+    ): Flow<Data<UserEntity>> {
+        if (email.isEmpty() || password.isEmpty()) {
+            val errorMessage =
+                App.appContext().resources.getString(R.string.auth_Required_Fields_Empty_Error)
+            return flow { emit(Data.error(AppError(errorMessage))) }
+        }
+
+        if (!email.matches(emailRegex)) {
+            val errorMessage =
+                App.appContext().resources.getString(R.string.auth_Email_Incorrect_Error)
+            return flow { emit(Data.error(AppError(errorMessage))) }
+        }
+
+        if (password.length < 6) {
+            val errorMessage =
+                App.appContext().resources.getString(R.string.registration_Password_Incorrect_Password)
+            return flow { emit(Data.error(AppError(errorMessage))) }
+        }
+
+        if (password != repeated_password) {
+            val errorMessage =
+                App.appContext().resources.getString(R.string.registration_Password_Incorrect_RepeatedPassword)
+            return flow { emit(Data.error(AppError(errorMessage))) }
+        }
+
+        return userRepository.signup(username, email, password, repeated_password)
+    }
 }
