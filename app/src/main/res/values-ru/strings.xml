@@ -19,9 +19,7 @@
     <string name="auth_required_fields_empty_error">Обязательные поля не заполнены</string>
     <string name="unknown_server_error">Неизвестная ошибка сервера</string>
     <string name="auth_email_incorrect_error">Некорректный email</string>
-
-    <string name="auth_Required_Fields_Empty_Error">Обязательные поля не заполнены</string>
-    <string name="unknown_Server_Error">Неизвестная ошибка сервера</string>
-    <string name="auth_Email_Incorrect_Error">Некорректный email</string>
+    <string name="reg_password_incorrect_error">Пароль должен содержать не менее 6 символов</string>
+    <string name="reg_repeated_password_incorrect_error">Пароли не совпадают</string>
 
 </resources>

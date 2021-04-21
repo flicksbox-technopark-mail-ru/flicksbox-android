@@ -33,11 +33,11 @@ class UserRepositoryImpl(
         username: String,
         email: String,
         password: String,
-        repeated_password: String
+        repeatedPassword: String
     ): Flow<Data<UserEntity>> =
-        flow { emit(userService.signup(SignupBody(username, email, password, repeated_password))) }
+        flow { emit(userService.signup(SignupRequestDTO(username, email, password, repeatedPassword))) }
             .map { user ->
-                val body = user.body ?: throw ApiNotRespondingError()
+                val body = user.body ?: throw ApiNotRespondingException()
                 body.toDomain()
             }
             .map {

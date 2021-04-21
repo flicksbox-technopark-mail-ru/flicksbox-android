@@ -15,5 +15,5 @@ interface UserService {
     suspend fun login(@Body login: LoginRequestDTO): BaseDTO<UserWrapperDTO>
 
     @POST("user/register")
-    suspend fun signup(@Body login: SignupBody): BaseDTO<UserWrapperDTO>
+    suspend fun signup(@Body login: SignupRequestDTO): BaseDTO<UserWrapperDTO>
 }
