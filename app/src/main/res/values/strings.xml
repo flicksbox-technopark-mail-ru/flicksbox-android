@@ -35,4 +35,16 @@
     <string name="reg_repeated_password_incorrect_error">Password mismatch</string>
     <string name="profile_password_changed">Password changed</string>
     <string name="profile_data_changed">Data changed</string>
+    <string name="content_title">Pulp Fiction</string>
+
+    <string name="nav_btn_home">Home</string>
+    <string name="nav_btn_my_list">My List</string>
+    <string name="nav_btn_movie">Movie</string>
+    <string name="nav_btn_tv_show">TV Show</string>
+
+    <string name="preview_play_btn">Play</string>
+    <string name="preview_info_btn">Info</string>
+
+    <string name="content_top">Top content</string>
+    <string name="content_new">New</string>
 </resources>

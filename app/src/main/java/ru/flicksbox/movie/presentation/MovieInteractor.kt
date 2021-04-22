@@ -7,4 +7,5 @@ import ru.flicksbox.movie.domain.MovieEntity
 
 interface MovieInteractor {
     fun getUserMovies(): Flow<Data<FavouritesEntity>>
+    fun getTopMovies(count: Int, from: Int): Flow<Data<List<MovieEntity>>>
 }
