@@ -1,3 +1,4 @@
+
 <resources>
     <string name="app_name" translatable="false">Flicksbox</string>
     <string name="textview_email" translatable="false">Email</string>
@@ -27,4 +28,6 @@
     <string name="auth_required_fields_empty_error">Required fields are empty</string>
     <string name="unknown_server_error">Unknown server error</string>
     <string name="auth_email_incorrect_error">Email is incorrect</string>
+    <string name="reg_password_incorrect_error">Password must be at least 6 characters</string>
+    <string name="reg_repeated_password_incorrect_error">Password mismatch</string>
 </resources>

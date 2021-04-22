@@ -10,6 +10,7 @@
     <string name="subscription">Подписка</string>
     <string name="subscription_status">Статус</string>
     <string name="subscribe">Подписаться</string>
+
     <string name="textview_password">Пароль</string>
     <string name="auth_textview_title">Авторизация</string>
     <string name="auth_button_login">Войти</string>
@@ -18,4 +19,7 @@
     <string name="auth_required_fields_empty_error">Обязательные поля не заполнены</string>
     <string name="unknown_server_error">Неизвестная ошибка сервера</string>
     <string name="auth_email_incorrect_error">Некорректный email</string>
+    <string name="reg_password_incorrect_error">Пароль должен содержать не менее 6 символов</string>
+    <string name="reg_repeated_password_incorrect_error">Пароли не совпадают</string>
+
 </resources>
