@@ -19,4 +19,16 @@
     <string name="subscription">Подписка</string>
     <string name="subscription_status">Статус</string>
     <string name="subscribe">Подписаться</string>
+    <string name="content_title">Криминальное чтиво</string>
+
+    <string name="nav_btn_home">Home</string>
+    <string name="nav_btn_my_list">My List</string>
+    <string name="nav_btn_movie">Movie</string>
+    <string name="nav_btn_tv_show">TV Show</string>
+
+    <string name="preview_play_btn">Play</string>
+    <string name="preview_info_btn">Info</string>
+
+    <string name="content_top">Top content</string>
+    <string name="content_new">New</string>
 </resources>

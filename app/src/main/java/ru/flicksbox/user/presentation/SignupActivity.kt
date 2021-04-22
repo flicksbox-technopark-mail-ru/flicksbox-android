@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ru.flicksbox.App
 import ru.flicksbox.R
+import ru.flicksbox.content.main.ContentActivity
 import ru.flicksbox.data.*
 import ru.flicksbox.utils.notifyError
 
@@ -67,7 +68,11 @@ class SignupActivity : AppCompatActivity() {
                         runOnUiThread { notifyError(user.throwable, this) }
                     }
                     is Data.Loading -> Log.d("HERE", user.toString())
-                    is Data.Content -> Log.d("HERE", user.toString())
+                    is Data.Content -> {
+                        Log.d("HERE", user.toString())
+                        val intent = Intent(this, ContentActivity::class.java)
+                        startActivity(intent)
+                    }
                 }
             }
             .launchIn(GlobalScope)
