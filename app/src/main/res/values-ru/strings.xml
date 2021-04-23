@@ -15,7 +15,7 @@
     <string name="auth_textview_title">Авторизация</string>
     <string name="auth_button_login">Войти</string>
     <string name="auth_textview_have_not_registered_yet">Ещё не зарегистрированы?</string>
-    <string name="auth_textview_register">Зарегистрироваться</string>
+    <string name="auth_textview_register"><u>Зарегистрироваться</u></string>
     <string name="auth_required_fields_empty_error">Обязательные поля не заполнены</string>
     <string name="unknown_server_error">Неизвестная ошибка сервера</string>
     <string name="auth_email_incorrect_error">Некорректный email</string>
