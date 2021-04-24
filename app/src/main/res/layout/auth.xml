@@ -63,13 +63,13 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/auth_Button_login"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
             android:layout_marginTop="@dimen/margin_start_s"
             android:layout_weight="1"
             android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:layout_height="30dp"
             android:background="@drawable/form_btn_shape"
-            android:text="@string/auth_button_login"
-            android:textColor="@color/white" />
+            android:text="@string/auth_button_login" />
 
         <TextView
             android:layout_weight="1"
