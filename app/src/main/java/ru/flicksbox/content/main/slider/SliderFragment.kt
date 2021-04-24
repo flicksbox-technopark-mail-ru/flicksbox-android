@@ -36,7 +36,7 @@ class SliderFragment: Fragment() {
         val adapter = SliderAdapter(data)
         recycler.adapter = adapter
 
-        activity?.runOnUiThread(java.lang.Runnable {
+        //activity?.runOnUiThread(java.lang.Runnable {
             App.movieInteractor.getTopMovies(15, 0)
                 .flowOn(Dispatchers.IO)
                 .onEach { movies ->
@@ -44,13 +44,16 @@ class SliderFragment: Fragment() {
                         is Data.Error -> Log.d("HERE", movies.toString())
                         is Data.Loading -> Log.d("HERE", movies.toString())
                         is Data.Content -> {
-                            adapter.updateData(movies.content)
+                            activity?.runOnUiThread {
+                                adapter.updateData(movies.content)
+                            }
+                            //adapter.updateData(movies.content)
                             Log.d("HERE", movies.content.toString())
                         }
                     }
                 }
                 .launchIn(GlobalScope)
-        })
+        //})
         return view
     }
 }
