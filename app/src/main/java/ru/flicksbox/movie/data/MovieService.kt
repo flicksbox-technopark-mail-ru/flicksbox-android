@@ -9,4 +9,7 @@ interface MovieService {
 
     @GET("movies/top")
     suspend fun getTopMovies(@Query("count") count: Int, @Query("from") from: Int): BaseDTO<MoviesWrapperDTO>
+
+    @GET("favourites")
+    suspend fun getUserMovies(): BaseDTO<UserListDTO>
 }
