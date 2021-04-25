@@ -1,57 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/main"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="450dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/margin_start_l"
+        android:layout_marginEnd="@dimen/margin_start_l"
         android:orientation="vertical">
+
         <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:text="@string/auth_textview_title" />
+            android:text="@string/auth_textview_title"
+            android:textSize="@dimen/font_m"
+            android:textColor="@color/white" />
+
         <TextView
+            android:layout_weight="1"
             android:id="@+id/auth_TextView_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:labelFor="@id/auth_EditText_email"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="@string/textview_email" />
+            android:text="@string/textview_email"
+            android:textColor="@color/white" />
+
         <EditText
+            android:layout_weight="2"
             android:id="@+id/auth_EditText_email"
-            android:inputType="textEmailAddress"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:autofillHints="" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_edit_shape"
+            android:inputType="textEmailAddress" />
+
         <TextView
+            android:layout_weight="1"
             android:id="@+id/auth_TextView_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:labelFor="@id/auth_EditText_password"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="@string/textview_password" />
+            android:text="@string/textview_password"
+            android:textColor="@color/white" />
+
         <EditText
+            android:layout_weight="2"
             android:id="@+id/auth_EditText_password"
-            android:inputType="textPassword"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:autofillHints="" />
-        <Button
-            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:background="@drawable/text_edit_shape"
+            android:inputType="textPassword" />
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/auth_Button_login"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/margin_start_s"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:layout_height="30dp"
+            android:background="@drawable/form_btn_shape"
             android:text="@string/auth_button_login" />
+
         <TextView
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:text="@string/auth_textview_have_not_registered_yet" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_start_l"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/auth_textview_have_not_registered_yet"
+            android:textColor="@color/white" />
+
         <TextView
+            android:layout_weight="1"
             android:id="@+id/auth_TextView_register"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:text="@string/auth_textview_register" />
+            android:text="@string/auth_textview_register"
+            android:textSize="@dimen/font_m"
+            android:padding="10dp"
+            android:textColor="@color/white" />
     </LinearLayout>
-</ScrollView>
+</FrameLayout>

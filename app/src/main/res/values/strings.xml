@@ -3,16 +3,19 @@
     <string name="app_name" translatable="false">Flicksbox</string>
     <string name="textview_email" translatable="false">Email</string>
     <string name="textview_password">Password</string>
-    <string name="auth_textview_title">Auth</string>
+    <string name="auth_textview_title">Authorization</string>
     <string name="auth_button_login">Log In</string>
     <string name="auth_textview_have_not_registered_yet">Have not registered yet?</string>
-    <string name="auth_textview_register">Registration</string>
+    <string name="auth_textview_register"><u>Registration</u></string>
     <string name="user_name">Name</string>
     <string name="email">Email</string>
     <string name="old_password">Old password</string>
+    <string name="security">Security</string>
+    <string name="profile">Profile</string>
     <string name="new_password">New password</string>
     <string name="repeat_password">Repeat password</string>
     <string name="save_changes">Save changes</string>
+    <string name="change_password_btn">Change password</string>
     <string name="subscription">Subscription</string>
     <string name="subscription_status">Status</string>
     <string name="subscribe">Subscribe</string>
@@ -21,7 +24,7 @@
     <string name="registration_TextView_repeatPassword">Repeat password</string>
     <string name="registration_Button_register">Register</string>
     <string name="registration_TextView_haveAlreadyRegistered">Have already registered?</string>
-    <string name="registration_TextView_logIn">Log In</string>
+    <string name="registration_TextView_logIn"><u>Log In</u></string>
     <string name="login_TextView_title">Auth</string>
     <string name="login_Button_login">Log In</string>
     <string name="login_TextView_haveNotRegisteredYet">Have not registered yet?</string>

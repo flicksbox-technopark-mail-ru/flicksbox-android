@@ -1,81 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/main"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="600dp"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/margin_start_l"
+        android:layout_marginEnd="@dimen/margin_start_l"
+        android:layout_gravity="center">
         <TextView
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
+            android:textSize="@dimen/font_m"
+            android:textColor="@color/white"
             android:text="@string/registration_TextView_title" /><!-- TODO: возможно можно в RecyclerView пары объединить -->
         <TextView
+            android:layout_weight="1"
             android:id="@+id/registration_TextView_username"
             android:labelFor="@id/registration_EditText_username"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="@string/registration_TextView_username" />
+            android:text="@string/registration_TextView_username"
+            android:textColor="@color/white"/>
         <EditText
+            android:layout_weight="2"
             android:id="@+id/registration_EditText_username"
             android:inputType="text"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:background="@drawable/text_edit_shape"
             android:autofillHints="" />
         <TextView
             android:id="@+id/registration_TextView_email"
+            android:layout_weight="1"
             android:labelFor="@id/registration_EditText_email"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="@string/textview_email" />
+            android:text="@string/textview_email"
+            android:textColor="@color/white"/>
         <EditText
             android:id="@+id/registration_EditText_email"
+            android:layout_weight="2"
             android:inputType="textEmailAddress"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:background="@drawable/text_edit_shape"
             android:autofillHints="" />
         <TextView
             android:id="@+id/registration_TextView_password"
+            android:layout_weight="1"
             android:labelFor="@id/registration_EditText_password"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="@string/textview_password" />
+            android:text="@string/textview_password"
+            android:textColor="@color/white"/>
         <EditText
             android:id="@+id/registration_EditText_password"
+            android:layout_weight="2"
             android:inputType="textPassword"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:background="@drawable/text_edit_shape"
             android:autofillHints="" />
         <TextView
             android:id="@+id/registration_TextView_repeatPassword"
+            android:layout_weight="1"
             android:labelFor="@id/registration_EditText_repeatPassword"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="@string/registration_TextView_repeatPassword" />
+            android:text="@string/registration_TextView_repeatPassword"
+            android:textColor="@color/white"/>
         <EditText
             android:id="@+id/registration_EditText_repeatPassword"
+            android:layout_weight="2"
             android:inputType="textPassword"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:background="@drawable/text_edit_shape"
             android:autofillHints="" />
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:gravity="center"
             android:id="@+id/registration_Button_register"
-            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/form_btn_shape"
+            android:textColor="@color/white"
+            android:layout_height="30dp"
+            android:layout_marginTop="@dimen/margin_start_s"
             android:layout_width="match_parent"
             android:text="@string/registration_Button_register" />
         <TextView
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:text="@string/registration_TextView_haveAlreadyRegistered" />
+            android:layout_marginTop="@dimen/margin_start_l"
+            android:text="@string/registration_TextView_haveAlreadyRegistered"
+            android:textColor="@color/white"/>
         <TextView
             android:id="@+id/registration_TextView_logIn"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:text="@string/registration_TextView_logIn" />
+            android:textSize="@dimen/font_m"
+            android:text="@string/registration_TextView_logIn"
+            android:textColor="@color/white"/>
     </LinearLayout>
-</ScrollView>
+</FrameLayout>
