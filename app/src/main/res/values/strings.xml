@@ -1,4 +1,3 @@
-
 <resources>
     <string name="app_name" translatable="false">Flicksbox</string>
     <string name="textview_email" translatable="false">Email</string>
@@ -18,6 +17,7 @@
     <string name="change_password_btn">Change password</string>
     <string name="subscription">Subscription</string>
     <string name="subscription_status">Status</string>
+    <string name="subscription_status_no_sub">No subscription</string>
     <string name="subscribe">Subscribe</string>
     <string name="registration_TextView_title">Registration</string>
     <string name="registration_TextView_username">Login</string>
@@ -33,4 +33,23 @@
     <string name="auth_email_incorrect_error">Email is incorrect</string>
     <string name="reg_password_incorrect_error">Password must be at least 6 characters</string>
     <string name="reg_repeated_password_incorrect_error">Password mismatch</string>
+    <string name="profile_password_changed">Password changed</string>
+    <string name="profile_data_changed">Data changed</string>
+    <string name="content_title">Pulp Fiction</string>
+
+    <string name="nav_btn_home">Home</string>
+    <string name="nav_btn_my_list">My List</string>
+    <string name="nav_btn_movie">Movie</string>
+    <string name="nav_btn_tv_show">TV Show</string>
+
+    <string name="preview_play_btn">Play</string>
+    <string name="preview_info_btn">Info</string>
+
+    <string name="content_top">Top content</string>
+    <string name="content_new">New</string>
+
+    <string name="title_main">Main</string>
+    <string name="title_favourites">Favourites</string>
+    <string name="title_profile">Profile</string>
+    <string name="favourites_not_authed">To watch favourites you need to log in first.</string>
 </resources>

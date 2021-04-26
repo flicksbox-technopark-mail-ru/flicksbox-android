@@ -30,6 +30,27 @@ class UserInteractorImpl(private val userRepository: UserRepository) : UserInter
         return userRepository.getUser()
     }
 
+    override fun updatePassword(oldPassword: String,
+                                newPassword: String,
+                                repeatedPassword: String): Flow<Data<UserEntity>> {
+        if (newPassword.length < MIN_PASSWORD_LENGTH) {
+            return flow { emit(Data.error(ApplicationException(PASSWORD_INCORRECT_ERROR))) }
+        }
+
+        if (newPassword != repeatedPassword) {
+            return flow { emit(Data.error(ApplicationException(REPEATED_PASSWORD_INCORRECT_ERROR))) }
+        }
+        return userRepository.updatePassword(oldPassword, newPassword, repeatedPassword)
+    }
+
+    override fun updateUserInfo(username: String, email: String): Flow<Data<UserEntity>> {
+        if (email.isNotEmpty() && !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            return flow { emit(Data.error(ApplicationException(EMAIL_INCORRECT_ERROR))) }
+        }
+
+        return userRepository.updateUserInfo(username, email)
+    }
+
     override fun signup(
         username: String,
         email: String,
