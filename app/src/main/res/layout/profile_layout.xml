@@ -10,244 +10,269 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="50dp"
         android:layout_margin="15dp">
 
         <ImageView
-            android:id="@+id/avatar"
+            android:id="@+id/profile_avatar"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:background="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/subs_wrapper"
-            android:layout_width="180dp"
+        <LinearLayout
+            android:id="@+id/info_wrapper"
+            android:layout_width="wrap_content"
             android:layout_height="148dp"
-            android:foregroundGravity="center"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/avatar"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toEndOf="@+id/profile_avatar"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/subscriptionTextView"
-                android:layout_width="0dp"
+                android:id="@+id/profile_label_nickname_val"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/subscription"
+                android:text="@string/user_name"
+                android:paddingTop="@dimen/margin_start_s"
+                android:paddingBottom="@dimen/margin_start_s"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="@dimen/font_m"
-                app:layout_constraintBottom_toTopOf="@+id/statusTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                android:textSize="@dimen/font_m" />
 
             <TextView
-                android:id="@+id/statusTextView"
-                android:layout_width="0dp"
+                android:id="@+id/profile_label_email_val"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/subscription_status"
+                android:text="@string/email"
+                android:paddingTop="@dimen/margin_start_s"
+                android:paddingBottom="@dimen/margin_start_s"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="@dimen/font_m"
-                app:layout_constraintBottom_toTopOf="@+id/button"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/subscriptionTextView" />
+                android:textSize="@dimen/font_m" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:background="@drawable/form_btn_shape"
-                android:text="@string/subscribe"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/statusTextView"
-                app:layout_constraintTop_toBottomOf="@+id/statusTextView" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/profile_form_wrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:foregroundGravity="center"
-            app:layout_constraintTop_toBottomOf="@+id/avatar"
+            app:layout_constraintTop_toBottomOf="@+id/profile_avatar"
             app:layout_constraintStart_toStartOf="parent">
 
-            <TextView
-                android:id="@+id/profile_label"
+            <LinearLayout
+                android:id="@+id/subs_wrapper"
+                android:background="@drawable/border_shape"
+                android:layout_marginTop="35dp"
+                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/profile"
-                android:paddingTop="@dimen/margin_start_s"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="@dimen/font_m"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/nameTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@string/user_name"
-                android:textAlignment="textStart"
-                android:textColor="@color/white"
-                android:textSize="@dimen/font_m"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profile_label" />
-
-            <EditText
-                android:id="@+id/nameEditText"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/text_edit_shape"
-                android:textAlignment="textStart"
-                android:textSize="@dimen/font_m"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
-
-            <TextView
-                android:id="@+id/emailTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/email"
-                android:textAlignment="textStart"
-                android:textColor="@color/white"
-                android:textSize="@dimen/font_m"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/profile_label_subscription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subscription"
+                    android:paddingTop="@dimen/margin_start_s"
+                    android:paddingBottom="@dimen/margin_start_s"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_m"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/emailEditText"
+                <TextView
+                    android:id="@+id/profile_label_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginStart="@dimen/margin_start_s"
+                    android:text="@string/subscription_status_no_sub"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_m"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_label_subscription"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/profile_btn_subscribe"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/form_btn_shape"
+                    android:text="@string/subscribe"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/change_info_wrapper"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/border_shape"
+                android:padding="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/text_edit_shape"
-                android:textAlignment="textStart"
-                android:textSize="@dimen/font_m"
-                app:layout_constraintEnd_toEndOf="@+id/oldPasswordTextView"
-                app:layout_constraintStart_toStartOf="@+id/oldPasswordTextView"
-                app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/subs_wrapper"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/profile_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_m"/>
+
+                <TextView
+                    android:id="@+id/profile_label_nickname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/user_name"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="@dimen/margin_label_bottom_s"
+                    android:textSize="@dimen/font_m" />
+
+                <EditText
+                    android:id="@+id/profile_input_nickname"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/text_edit_shape"
+                    android:textAlignment="textStart"
+                    android:layout_marginBottom="@dimen/margin_bottom"
+                    android:textSize="@dimen/font_m"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_label_nickname" />
+
+                <TextView
+                    android:id="@+id/profile_label_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="@dimen/margin_label_bottom_s"
+                    android:textSize="@dimen/font_m" />
+
+                <EditText
+                    android:id="@+id/profile_input_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/text_edit_shape"
+                    android:textAlignment="textStart"
+                    android:textSize="@dimen/font_m" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/profile_btn_change_data"
+                    android:layout_marginTop="@dimen/margin_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/form_btn_shape"
+                    android:text="@string/save_changes"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_s" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/change_password_wrapper"
+                android:background="@drawable/border_shape"
+                android:layout_marginTop="35dp"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/change_info_wrapper"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/profile_label_security"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/security"
+                    android:paddingTop="@dimen/margin_start_s"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_m" />
+
+                <TextView
+                    android:id="@+id/profile_label_old_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/old_password"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="@dimen/margin_label_bottom_s"
+                    android:textSize="@dimen/font_m" />
+
+                <EditText
+                    android:id="@+id/profile_input_old_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/text_edit_shape"
+                    android:textAlignment="textStart"
+                    android:textSize="@dimen/font_m"
+                    android:inputType="textPassword" />
+
+                <TextView
+                    android:id="@+id/profile_label_new_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/new_password"
+                    android:layout_marginTop="@dimen/margin_bottom"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="@dimen/margin_label_bottom_s"
+                    android:textSize="@dimen/font_m" />
+
+                <EditText
+                    android:id="@+id/profile_input_new_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/text_edit_shape"
+                    android:textAlignment="textStart"
+                    android:textSize="@dimen/font_m"
+                    android:inputType="textPassword" />
+
+                <TextView
+                    android:id="@+id/profile_label_repeated_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/repeat_password"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="@dimen/margin_bottom"
+                    android:layout_marginBottom="@dimen/margin_label_bottom_s"
+                    android:textSize="@dimen/font_m" />
+
+                <EditText
+                    android:id="@+id/profile_input_repeat_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/text_edit_shape"
+                    android:textAlignment="textStart"
+                    android:textSize="@dimen/font_m"
+                    android:inputType="textPassword"/>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/saveChangesButton"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/form_btn_shape"
-                android:text="@string/save_changes"
-                android:textColor="@color/white"
-                android:textSize="@dimen/font_s"
-                app:layout_constraintBottom_toTopf="@+id/oldPasswordTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
-
-            <TextView
-                android:id="@+id/profile_security_label"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/security"
-                android:paddingTop="@dimen/margin_start_s"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="@dimen/font_m"
-                app:layout_constraintBottom_toTopOf="@+id/oldPasswordEditText"
-                app:layout_constraintEnd_toEndOf="@+id/oldPasswordEditText"
-                app:layout_constraintStart_toStartOf="@+id/oldPasswordEditText"
-                app:layout_constraintTop_toBottomOf="@+id/saveChangesButton" />
-
-            <TextView
-                android:id="@+id/oldPasswordTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/old_password"
-                android:textAlignment="textStart"
-                android:textColor="@color/white"
-                android:textSize="@dimen/font_m"
-                app:layout_constraintBottom_toTopOf="@+id/oldPasswordEditText"
-                app:layout_constraintEnd_toEndOf="@+id/oldPasswordEditText"
-                app:layout_constraintStart_toStartOf="@+id/oldPasswordEditText"
-                app:layout_constraintTop_toBottomOf="@+id/profile_security_label" />
-
-            <EditText
-                android:id="@+id/oldPasswordEditText"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/text_edit_shape"
-                android:textAlignment="textStart"
-                android:textSize="@dimen/font_m"
-                app:layout_constraintBottom_toTopOf="@+id/newPasswordTextView"
-                app:layout_constraintEnd_toEndOf="@+id/newPasswordTextView"
-                app:layout_constraintStart_toStartOf="@+id/newPasswordTextView"
-                app:layout_constraintTop_toBottomOf="@+id/oldPasswordTextView" />
-
-            <TextView
-                android:id="@+id/newPasswordTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/new_password"
-                android:textAlignment="textStart"
-                android:textColor="@color/white"
-                android:textSize="@dimen/font_m"
-                app:layout_constraintBottom_toTopOf="@+id/newPasswordEditText"
-                app:layout_constraintEnd_toEndOf="@+id/newPasswordEditText"
-                app:layout_constraintStart_toStartOf="@+id/newPasswordEditText"
-                app:layout_constraintTop_toBottomOf="@+id/oldPasswordEditText" />
-
-            <EditText
-                android:id="@+id/newPasswordEditText"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/text_edit_shape"
-                android:textAlignment="textStart"
-                android:textSize="@dimen/font_m"
-                app:layout_constraintBottom_toTopOf="@+id/repeatPasswordTextView"
-                app:layout_constraintEnd_toEndOf="@+id/repeatPasswordTextView"
-                app:layout_constraintStart_toStartOf="@+id/repeatPasswordTextView"
-                app:layout_constraintTop_toBottomOf="@+id/newPasswordTextView" />
-
-            <TextView
-                android:id="@+id/repeatPasswordTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/repeat_password"
-                android:textAlignment="textStart"
-                android:textColor="@color/white"
-                android:textSize="@dimen/font_m"
-                app:layout_constraintBottom_toTopOf="@+id/repeatPasswordEditText"
-                app:layout_constraintEnd_toEndOf="@+id/repeatPasswordEditText"
-                app:layout_constraintStart_toStartOf="@+id/repeatPasswordEditText"
-                app:layout_constraintTop_toBottomOf="@+id/newPasswordEditText" />
-
-            <EditText
-                android:id="@+id/repeatPasswordEditText"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/text_edit_shape"
-                android:textAlignment="textStart"
-                android:textSize="@dimen/font_m"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/repeatPasswordTextView" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/changePasswordButton"
+                android:id="@+id/profile_btn_change_password"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/form_btn_shape"
                 android:text="@string/change_password_btn"
                 android:textColor="@color/white"
                 android:textSize="@dimen/font_s"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/repeatPasswordEditText" />
+                android:layout_marginTop="@dimen/margin_bottom" />
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -10,6 +10,7 @@
     <string name="change_password_btn">Поменять пароль</string>
     <string name="subscription">Подписка</string>
     <string name="subscription_status">Статус</string>
+    <string name="subscription_status_no_sub">Нет подписки</string>
     <string name="subscribe">Подписаться</string>
     <string name="security">Настройки пароля</string>
     <string name="profile">Профиль</string>
@@ -24,5 +25,7 @@
     <string name="auth_email_incorrect_error">Некорректный email</string>
     <string name="reg_password_incorrect_error">Пароль должен содержать не менее 6 символов</string>
     <string name="reg_repeated_password_incorrect_error">Пароли не совпадают</string>
+    <string name="profile_password_changed">Пароль изменен</string>
+    <string name="profile_data_changed">Данные изменены</string>
 
 </resources>

@@ -57,8 +57,14 @@ class LoginActivity : AppCompatActivity() {
             .onEach { user ->
                 when (user) {
                     is Data.Error -> runOnUiThread { notifyError(user.throwable, this) }
-                    is Data.Loading -> Log.d("HERE", user.toString()) //TODO(Create loading UI element)
-                    is Data.Content -> Log.d("HERE", user.toString()) //TODO(Create )
+                    is Data.Loading -> {
+                        Log.d("HERE", user.toString())
+                    } //TODO(Create loading UI element)
+                    is Data.Content -> {
+                        Log.d("HERE", user.toString())
+                        val intent = Intent(this, ProfileActivity::class.java)
+                        startActivity(intent)
+                    } //TODO(Create )
                 }
             }
             .launchIn(GlobalScope)

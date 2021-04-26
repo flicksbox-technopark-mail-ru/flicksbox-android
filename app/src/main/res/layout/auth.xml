@@ -7,14 +7,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/margin_start_l"
         android:layout_marginEnd="@dimen/margin_start_l"
         android:orientation="vertical">
 
         <TextView
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -23,8 +22,8 @@
             android:textColor="@color/white" />
 
         <TextView
-            android:layout_weight="1"
             android:id="@+id/auth_TextView_email"
+            android:layout_marginBottom="@dimen/margin_label_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:labelFor="@id/auth_EditText_email"
@@ -32,15 +31,15 @@
             android:textColor="@color/white" />
 
         <EditText
-            android:layout_weight="2"
             android:id="@+id/auth_EditText_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="@dimen/margin_bottom"
             android:background="@drawable/text_edit_shape"
             android:inputType="textEmailAddress" />
 
         <TextView
-            android:layout_weight="1"
+            android:layout_marginBottom="@dimen/margin_label_bottom"
             android:id="@+id/auth_TextView_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,11 +48,11 @@
             android:textColor="@color/white" />
 
         <EditText
-            android:layout_weight="2"
             android:id="@+id/auth_EditText_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:autofillHints=""
+            android:layout_marginBottom="@dimen/margin_bottom"
             android:background="@drawable/text_edit_shape"
             android:inputType="textPassword" />
 
@@ -61,15 +60,13 @@
             android:id="@+id/auth_Button_login"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/margin_start_s"
-            android:layout_weight="1"
             android:layout_gravity="center"
             android:textColor="@color/white"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:background="@drawable/form_btn_shape"
             android:text="@string/auth_button_login" />
 
         <TextView
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_start_l"
@@ -78,7 +75,6 @@
             android:textColor="@color/white" />
 
         <TextView
-            android:layout_weight="1"
             android:id="@+id/auth_TextView_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

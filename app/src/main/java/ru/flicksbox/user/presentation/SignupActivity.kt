@@ -67,7 +67,11 @@ class SignupActivity : AppCompatActivity() {
                         runOnUiThread { notifyError(user.throwable, this) }
                     }
                     is Data.Loading -> Log.d("HERE", user.toString())
-                    is Data.Content -> Log.d("HERE", user.toString())
+                    is Data.Content -> {
+                        Log.d("HERE", user.toString())
+                        val intent = Intent(this, ProfileActivity::class.java)
+                        startActivity(intent)
+                    }
                 }
             }
             .launchIn(GlobalScope)
