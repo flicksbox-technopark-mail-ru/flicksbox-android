@@ -12,4 +12,8 @@ class MovieInteractorImpl(private val movieRepository: MovieRepository) : MovieI
     override fun getTopMovies(count: Int, from: Int): Flow<Data<List<MovieEntity>>> {
         return movieRepository.getTopMovies(15, 0)
     }
+
+    override fun getLatestMovies(count: Int, from: Int): Flow<Data<List<MovieEntity>>> {
+        return movieRepository.getLatestMovies(15, 0)
+    }
 }

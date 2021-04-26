@@ -9,8 +9,6 @@
 
     <include layout="@layout/fragment_preview" />
 
-    <include layout="@layout/navigate_buttons" />
-
     <LinearLayout
         android:id="@+id/slider_content_top"
         android:layout_width="match_parent"
@@ -46,7 +44,10 @@
             android:text="@string/content_new"
             android:textColor="@color/white"
             android:textSize="@dimen/font_s"/>
-        <include layout="@layout/slider_recyclerview" />
+        <LinearLayout android:id="@+id/slider_content_latest_wrapper"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" />
     </LinearLayout>
 
 

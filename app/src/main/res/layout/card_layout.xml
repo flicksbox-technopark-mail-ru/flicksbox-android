@@ -38,7 +38,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
-            android:text="@string/content_title"
             android:textColor="@color/white"
             android:textSize="@dimen/font_s"
             app:layout_constraintStart_toStartOf="@+id/card_poster"

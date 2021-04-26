@@ -25,6 +25,15 @@ class MovieRepositoryImpl(
             }
             .map { Data.content(it) }
             .catch { emit(Data.error(it)) }
+
+    override fun getLatestMovies(count: Int, from: Int): Flow<Data<List<MovieEntity>>> =
+        flow { emit(movieService.getLatestMovies(count, from)) }
+            .map { movies ->
+                val body = movies.body ?: throw ApiNotRespondingException()
+                body.movies.map { it.toDomain() }
+            }
+            .map { Data.content(it) }
+            .catch { emit(Data.error(it)) }
 }
 
 fun FavouritesWrapperDTO.toDomain(): FavouritesEntity =

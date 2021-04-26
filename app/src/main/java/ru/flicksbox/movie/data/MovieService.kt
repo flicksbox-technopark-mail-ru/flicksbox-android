@@ -12,4 +12,7 @@ interface MovieService {
 
     @GET("favourites")
     suspend fun getUserMovies(): BaseDTO<UserListDTO>
+
+    @GET("movies/latest")
+    suspend fun getLatestMovies(@Query("count") count: Int, @Query("from") from: Int): BaseDTO<MoviesWrapperDTO>
 }

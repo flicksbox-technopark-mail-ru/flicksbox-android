@@ -28,4 +28,8 @@
     <string name="profile_password_changed">Пароль изменен</string>
     <string name="profile_data_changed">Данные изменены</string>
 
+    <string name="title_main">Главная</string>
+    <string name="title_favourites">Избранное</string>
+    <string name="title_profile">Профиль</string>
+
 </resources>

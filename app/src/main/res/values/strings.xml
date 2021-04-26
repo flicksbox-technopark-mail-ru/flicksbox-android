@@ -47,4 +47,10 @@
 
     <string name="content_top">Top content</string>
     <string name="content_new">New</string>
+
+    <string name="title_main">Main</string>
+    <string name="title_favourites">Favourites</string>
+    <string name="title_profile">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

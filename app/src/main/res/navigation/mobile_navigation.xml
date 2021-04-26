@@ -7,21 +7,21 @@
 
     <fragment
         android:id="@+id/navigation_main"
-        android:name="com.example.bottomnavbartest.ui.home.HomeFragment"
+        android:name="ru.flicksbox.ui.MainFragment"
         android:label="@string/title_main"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_main" />
 
     <fragment
         android:id="@+id/navigation_favourites"
-        android:name="com.example.bottomnavbartest.ui.dashboard.DashboardFragment"
+        android:name="ru.flicksbox.ui.FavouritesFragment"
         android:label="@string/title_favourites"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_favourites" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.bottomnavbartest.ui.dashboard.DashboardFragment"
+        android:name="ru.flicksbox.ui.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_profile" />
 
     <fragment>
 
