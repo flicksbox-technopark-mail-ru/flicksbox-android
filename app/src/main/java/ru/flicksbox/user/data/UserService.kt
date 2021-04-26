@@ -1,9 +1,6 @@
 package ru.flicksbox.user.data
 
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.PUT
+import retrofit2.http.*
 import ru.flicksbox.network.BaseDTO
 
 interface UserService {
@@ -12,7 +9,6 @@ interface UserService {
     suspend fun getUser(): BaseDTO<UserWrapperDTO>
 
     @POST("session")
-
     suspend fun login(@Body login: LoginRequestDTO): BaseDTO<UserWrapperDTO>
 
     @POST("user/register")
@@ -23,4 +19,7 @@ interface UserService {
 
     @PUT("user/password")
     suspend fun updatePassword(@Body password: ProfilePasswordRequestDTO): BaseDTO<UserWrapperDTO>
+
+    @DELETE("session")
+    suspend fun logout(): LogoutDTO
 }

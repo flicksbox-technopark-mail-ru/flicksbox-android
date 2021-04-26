@@ -52,4 +52,6 @@
     <string name="title_favourites">Favourites</string>
     <string name="title_profile">Profile</string>
     <string name="favourites_not_authed">To watch favourites you need to log in first.</string>
+
+    <string name="profile_logout_button">Log out</string>
 </resources>

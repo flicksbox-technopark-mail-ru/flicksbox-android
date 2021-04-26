@@ -6,3 +6,7 @@ data class UserEntity(
     val email: String,
     val nickname: String,
 )
+
+data class ResultEntity(
+    val success: Boolean
+)

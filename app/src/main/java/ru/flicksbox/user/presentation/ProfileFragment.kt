@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.flowOn
@@ -34,6 +35,7 @@ class ProfileFragment : Fragment() {
     lateinit var nicknameLabel: TextView
     lateinit var emailLabel: TextView
     lateinit var avatar: ImageView
+    lateinit var logoutButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,6 +53,7 @@ class ProfileFragment : Fragment() {
         nicknameLabel = view.findViewById(R.id.profile_label_nickname_val)
         emailLabel = view.findViewById(R.id.profile_label_email_val)
         avatar = view.findViewById(R.id.profile_avatar)
+        logoutButton = view.findViewById(R.id.profile_logout_button)
 
         restoreState(savedInstanceState)
 
@@ -77,6 +80,10 @@ class ProfileFragment : Fragment() {
 
         changePasswordBtn.setOnClickListener {
             handleSavePasswordChanges()
+        }
+
+        logoutButton.setOnClickListener {
+            handleLogoutButtonClick()
         }
 
         return view
@@ -176,5 +183,16 @@ class ProfileFragment : Fragment() {
         outState.putString(NEW_PASSWORD_INPUT, newPasswordInput.text.toString())
         outState.putString(REPEATED_PASSWORD_INPUT, repeatPasswordInput.text.toString())
         super.onSaveInstanceState(outState)
+    }
+
+    private fun handleLogoutButtonClick() {
+        App.userInteractor.logout()
+            .flowOn(Dispatchers.IO)
+            .onEach { result ->
+                when(result) {
+                    is Data.Content -> openLoginFragment()
+                    is Data.Error -> Log.d("HERE", result.throwable.toString())
+                }
+            }.launchIn(CoroutineScope(Dispatchers.Main))
     }
 }
