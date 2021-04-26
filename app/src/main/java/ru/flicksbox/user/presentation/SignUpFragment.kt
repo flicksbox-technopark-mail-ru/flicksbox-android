@@ -1,13 +1,14 @@
 package ru.flicksbox.user.presentation
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.flowOn
@@ -15,8 +16,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ru.flicksbox.App
 import ru.flicksbox.R
-import ru.flicksbox.content.main.ContentActivity
-import ru.flicksbox.data.*
+import ru.flicksbox.data.Data
 import ru.flicksbox.utils.notifyError
 
 private const val USERNAME_INPUT = "username_input"
@@ -24,7 +24,7 @@ private const val EMAIL_INPUT = "email_input"
 private const val PASSWORD_INPUT = "password_input"
 private const val REPEATED_PASSWORD_INPUT = "repeated_password_input"
 
-class SignupActivity : AppCompatActivity() {
+class SignUpFragment : Fragment() {
     lateinit var submitButton: Button
     lateinit var usernameInput: EditText
     lateinit var emailInput: EditText
@@ -34,14 +34,20 @@ class SignupActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.registration)
+    }
 
-        submitButton = findViewById(R.id.registration_Button_register)
-        usernameInput = findViewById(R.id.registration_EditText_username)
-        emailInput = findViewById(R.id.registration_EditText_email)
-        passwordInput = findViewById(R.id.registration_EditText_password)
-        repeatedPasswordInput = findViewById(R.id.registration_EditText_repeatPassword)
-        loginButton = findViewById(R.id.registration_TextView_logIn)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_signup, container, false)
+        submitButton = view.findViewById(R.id.registration_Button_register)
+        usernameInput = view.findViewById(R.id.registration_EditText_username)
+        emailInput = view.findViewById(R.id.registration_EditText_email)
+        passwordInput = view.findViewById(R.id.registration_EditText_password)
+        repeatedPasswordInput = view.findViewById(R.id.registration_EditText_repeatPassword)
+        loginButton = view.findViewById(R.id.registration_TextView_logIn)
 
         restoreState(savedInstanceState)
 
@@ -52,6 +58,8 @@ class SignupActivity : AppCompatActivity() {
         loginButton.setOnClickListener {
             handleLoginButtonClick()
         }
+
+        return view
     }
 
     private fun handleSumbitButtonClick() {
@@ -65,22 +73,27 @@ class SignupActivity : AppCompatActivity() {
             .onEach { user ->
                 when (user) {
                     is Data.Error -> {
-                        runOnUiThread { notifyError(user.throwable, this) }
+                        activity?.runOnUiThread { notifyError(user.throwable, requireContext()) }
                     }
                     is Data.Loading -> Log.d("HERE", user.toString())
                     is Data.Content -> {
-                        Log.d("HERE", user.toString())
-                        val intent = Intent(this, ProfileActivity::class.java)
-                        startActivity(intent)
+                        openProfileFragment()
                     }
                 }
             }
             .launchIn(GlobalScope)
     }
 
+    private fun openProfileFragment() {
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(R.id.profile_layout, ProfileFragment())
+            ?.addToBackStack(null)?.commit()
+    }
+
     private fun handleLoginButtonClick() {
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(R.id.profile_layout, LoginFragment())
+            ?.addToBackStack(null)?.commit()
     }
 
     private fun restoreState(savedInstanceState: Bundle?) {
@@ -92,11 +105,11 @@ class SignupActivity : AppCompatActivity() {
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+    override fun onSaveInstanceState(outState: Bundle) {
         outState.putString(USERNAME_INPUT, usernameInput.text.toString())
         outState.putString(EMAIL_INPUT, emailInput.text.toString())
         outState.putString(PASSWORD_INPUT, passwordInput.text.toString())
         outState.putString(REPEATED_PASSWORD_INPUT, repeatedPasswordInput.text.toString())
-        super.onSaveInstanceState(outState, outPersistentState)
+        super.onSaveInstanceState(outState)
     }
 }

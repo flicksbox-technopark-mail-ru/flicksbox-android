@@ -1,25 +1,24 @@
-package ru.flicksbox.content.main.slider
+package ru.flicksbox.movie.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import ru.flicksbox.R
 import ru.flicksbox.movie.domain.MovieEntity
 
 
-class SliderAdapter(list: List<MovieEntity> = listOf()): RecyclerView.Adapter<SliderHolder>() {
-    var items: List<MovieEntity> = list.toList()
+class SliderAdapter(list: List<MovieViewData> = listOf()): RecyclerView.Adapter<SliderHolder>() {
+    var items: List<MovieViewData> = list.toList()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SliderHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.card_layout, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.component_card, parent, false)
         return SliderHolder(view)
     }
 
-    fun updateData(inputItems: List<MovieEntity>) {
+    fun updateData(inputItems: List<MovieViewData>) {
         items = inputItems
         notifyDataSetChanged()
     }

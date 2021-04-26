@@ -7,23 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_main"
-        android:name="ru.flicksbox.ui.MainFragment"
+        android:name="ru.flicksbox.movie.presentation.MainFragment"
         android:label="@string/title_main"
         tools:layout="@layout/fragment_main" />
 
     <fragment
         android:id="@+id/navigation_favourites"
-        android:name="ru.flicksbox.ui.FavouritesFragment"
+        android:name="ru.flicksbox.movie.presentation.FavouritesFragment"
         android:label="@string/title_favourites"
         tools:layout="@layout/fragment_favourites" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="ru.flicksbox.ui.ProfileFragment"
+        android:name="ru.flicksbox.user.presentation.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
-
-    <fragment>
-
-    </fragment>
 </navigation>
