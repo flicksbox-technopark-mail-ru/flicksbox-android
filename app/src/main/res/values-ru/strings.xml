@@ -33,4 +33,6 @@
     <string name="title_profile">Профиль</string>
 
     <string name="favourites_not_authed">Для просмотра избранного необходимо авторизироваться</string>
+
+    <string name="profile_logout_button">Выйти</string>
 </resources>

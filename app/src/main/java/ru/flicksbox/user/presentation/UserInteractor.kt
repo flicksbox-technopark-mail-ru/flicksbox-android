@@ -2,6 +2,7 @@ package ru.flicksbox.user.presentation
 
 import kotlinx.coroutines.flow.Flow
 import ru.flicksbox.data.Data
+import ru.flicksbox.user.domain.ResultEntity
 import ru.flicksbox.user.domain.UserEntity
 
 interface UserInteractor {
@@ -10,4 +11,5 @@ interface UserInteractor {
     fun getUser(): Flow<Data<UserEntity>>
     fun updatePassword(oldPassword: String, newPassword: String, repeatedPassword: String): Flow<Data<UserEntity>>
     fun updateUserInfo(username: String, email: String): Flow<Data<UserEntity>>
+    fun logout(): Flow<Data<ResultEntity>>
 }

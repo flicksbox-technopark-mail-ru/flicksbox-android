@@ -75,4 +75,6 @@ class UserInteractorImpl(private val userRepository: UserRepository) : UserInter
 
         return userRepository.signup(username, email, password, repeatedPassword)
     }
+
+    override fun logout(): Flow<Data<ResultEntity>> = userRepository.logout()
 }
