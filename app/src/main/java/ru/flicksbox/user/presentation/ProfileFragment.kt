@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -16,6 +17,7 @@ import kotlinx.coroutines.flow.onEach
 import ru.flicksbox.App
 import ru.flicksbox.R
 import ru.flicksbox.data.Data
+import ru.flicksbox.utils.buildImageUrl
 import ru.flicksbox.utils.notifyError
 
 private const val NICKNAME_INPUT = "username_input"
@@ -65,6 +67,15 @@ class ProfileFragment : Fragment() {
                         activity?.runOnUiThread {
                             nicknameLabel.text = user.content.nickname
                             emailLabel.text = user.content.email
+                            if (user.content.avatar.isNotBlank()) {
+                                val path = buildImageUrl(user.content.avatar)
+                                Picasso
+                                    .with(requireContext())
+                                    .load(path)
+                                    .into(avatar)
+                            } else {
+                                avatar.setImageResource(R.drawable.default_avatar)
+                            }
                         }
                     }
                     is Data.Error -> {
@@ -189,7 +200,7 @@ class ProfileFragment : Fragment() {
         App.userInteractor.logout()
             .flowOn(Dispatchers.IO)
             .onEach { result ->
-                when(result) {
+                when (result) {
                     is Data.Content -> openLoginFragment()
                     is Data.Error -> Log.d("HERE", result.throwable.toString())
                 }
