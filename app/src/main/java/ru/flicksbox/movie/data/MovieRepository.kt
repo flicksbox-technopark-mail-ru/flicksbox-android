@@ -34,6 +34,15 @@ class MovieRepositoryImpl(
             }
             .map { Data.content(it) }
             .catch { emit(Data.error(it)) }
+
+    override fun getMovie(id: Int): Flow<Data<MovieEntity>> =
+        flow { emit(movieService.getMovie(id)) }
+            .map { movie ->
+                val body = movie.body ?: throw ApiNotRespondingException()
+                body.movie.toDomain()
+            }
+            .map { Data.content(it) }
+            .catch { emit(Data.error(it)) }
 }
 
 fun FavouritesWrapperDTO.toDomain(): FavouritesEntity =

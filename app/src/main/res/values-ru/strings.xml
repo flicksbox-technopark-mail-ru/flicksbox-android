@@ -35,4 +35,10 @@
     <string name="favourites_not_authed">Для просмотра избранного необходимо авторизироваться</string>
 
     <string name="profile_logout_button">Выйти</string>
+
+    <string name="single_movie_description">Описание:</string>
+    <string name="single_movie_country">Страна:</string>
+    <string name="single_movie_genres">Жанр:</string>
+    <string name="single_movie_actors">Актёры:</string>
+    <string name="content_director">Квентин Тарантино</string>
 </resources>

@@ -9,4 +9,5 @@ interface MovieInteractor {
     fun getUserMovies(): Flow<Data<FavouritesEntity>>
     fun getTopMovies(count: Int, from: Int): Flow<Data<List<MovieEntity>>>
     fun getLatestMovies(count: Int, from: Int): Flow<Data<List<MovieEntity>>>
+    fun getMovie(id :Int): Flow<Data<MovieEntity>>
 }
