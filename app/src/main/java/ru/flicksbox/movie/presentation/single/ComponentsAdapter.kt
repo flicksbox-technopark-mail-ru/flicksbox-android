@@ -11,7 +11,10 @@ const val PREVIEW_VIEW_HOLDER = 0
 const val OPTIONS_VIEW_HOLDER = 1
 const val INFO_VIEW_HOLDER = 2
 
-class ComponentsAdapter(private val playClickListener: PlayClickListener) :
+class ComponentsAdapter(
+    private val playClickListener: PlayClickListener,
+    private val favouritesClickListener: FavouritesClickListener
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var dataSource: FullMovieViewData? = null
@@ -29,7 +32,7 @@ class ComponentsAdapter(private val playClickListener: PlayClickListener) :
         when (holder.itemViewType) {
             PREVIEW_VIEW_HOLDER -> dataSource?.let { (holder as PreviewViewHolder).bind(it.toPreview()) }
             INFO_VIEW_HOLDER -> dataSource?.let { (holder as InfoViewHolder).bind(it.toInfo()) }
-            OPTIONS_VIEW_HOLDER -> (holder as OptionsViewHolder).bind()
+            OPTIONS_VIEW_HOLDER -> dataSource?.let { (holder as OptionsViewHolder).bind(it.id, it.isFavorite) }
         }
     }
 
@@ -56,7 +59,7 @@ class ComponentsAdapter(private val playClickListener: PlayClickListener) :
     private fun createOptionsViewHolder(parent: ViewGroup): OptionsViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.component_movie_options, parent, false)
-        return OptionsViewHolder(view, playClickListener)
+        return OptionsViewHolder(view, playClickListener, favouritesClickListener)
     }
 
     fun updateData(movie: FullMovieViewData) {

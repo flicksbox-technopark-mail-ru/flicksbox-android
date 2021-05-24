@@ -36,7 +36,7 @@ class MainFragment : Fragment(), MovieClickListener {
         val latestAdapter = SliderAdapter(latestData, this)
         latestRecycler.adapter = latestAdapter
 
-        App.movieInteractor.getLatestMovies(15, 0)
+        App.movieInteractor.getLatestMovies(20, 0)
             .flowOn(Dispatchers.IO)
             .onEach { movies ->
                 when (movies) {
@@ -58,7 +58,7 @@ class MainFragment : Fragment(), MovieClickListener {
         val topAdapter = SliderAdapter(topData, this)
         topRecycler.adapter = topAdapter
 
-        App.movieInteractor.getTopMovies(15, 0)
+        App.movieInteractor.getTopMovies(20, 0)
             .flowOn(Dispatchers.IO)
             .onEach { movies ->
                 when (movies) {

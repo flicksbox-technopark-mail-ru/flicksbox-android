@@ -1,9 +1,11 @@
 package ru.flicksbox.movie.presentation.single
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +24,12 @@ import ru.flicksbox.movie.presentation.player.PlayerFragment
 const val MOVIE_ID = "movie_id"
 const val DEFAULT_MOVIE_ID = 0
 
-class SingleMovieFragment : Fragment(), PlayClickListener {
+interface FavouritesClickListener {
+    fun onAddToFavouritesClick(id: Int, onSuccess: () -> Unit, onError: () -> Unit)
+    fun onDeleteFromFavouritesClick(id: Int, onSuccess: () -> Unit, onError: () -> Unit)
+}
+
+class SingleMovieFragment : Fragment(), PlayClickListener, FavouritesClickListener {
     private var movieID: Int? = null
     private var movieUrl: String? = null
 
@@ -40,7 +47,7 @@ class SingleMovieFragment : Fragment(), PlayClickListener {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_single_movie, container, false)
         val componentsRecycler = view.findViewById<RecyclerView>(R.id.single_movie_recycler)
-        val adapter = ComponentsAdapter(this)
+        val adapter = ComponentsAdapter(this, this)
         componentsRecycler.adapter = adapter
         componentsRecycler.layoutManager = LinearLayoutManager(requireContext())
 
@@ -51,14 +58,6 @@ class SingleMovieFragment : Fragment(), PlayClickListener {
                     is Data.Content -> {
                         adapter.updateData(movie.content.toViewData())
                         movieUrl = movie.content.video
-                    }
-
-                    is Data.Error -> {
-
-                    }
-
-                    is Data.Loading -> {
-
                     }
                 }
             }.launchIn(CoroutineScope(Dispatchers.Main))
@@ -82,6 +81,36 @@ class SingleMovieFragment : Fragment(), PlayClickListener {
                 ?.replace(R.id.single_movie_layout, PlayerFragment.newInstance(it))
                 ?.addToBackStack(null)?.commit()
         }
+    }
+
+    override fun onAddToFavouritesClick(id: Int, onSuccess: () -> Unit, onError: () -> Unit) {
+        App.movieInteractor.addToFavourites(id)
+            .flowOn(Dispatchers.IO)
+            .onEach { movie ->
+                when (movie) {
+                    is Data.Content -> {
+                        onSuccess()
+                    }
+                    is Data.Error -> {
+                        onError()
+                    }
+                }
+            }.launchIn(CoroutineScope(Dispatchers.Main))
+    }
+
+    override fun onDeleteFromFavouritesClick(id: Int, onSuccess: () -> Unit, onError: () -> Unit) {
+        App.movieInteractor.deleteFromFavourites(id)
+            .flowOn(Dispatchers.IO)
+            .onEach { movie ->
+                when (movie) {
+                    is Data.Content -> {
+                        onSuccess()
+                    }
+                    is Data.Error -> {
+                        onSuccess()
+                    }
+                }
+            }.launchIn(CoroutineScope(Dispatchers.Main))
     }
 }
 

@@ -11,14 +11,18 @@
         android:text="@string/single_movie_description"
         android:textColor="@color/white"
         android:textSize="@dimen/font_m"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/margin_start_s"
+        android:layout_marginEnd="@dimen/margin_start_s"/>
 
     <TextView
         android:id="@+id/single_movie_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:textSize="@dimen/font_xs"/>
+        android:textSize="@dimen/font_xs"
+        android:layout_marginStart="@dimen/margin_start_s"
+        android:layout_marginEnd="@dimen/margin_start_s" />
 
     <TextView
         android:layout_width="match_parent"
@@ -26,14 +30,18 @@
         android:text="@string/single_movie_country"
         android:textColor="@color/white"
         android:textSize="@dimen/font_m"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/margin_start_s"
+        android:layout_marginEnd="@dimen/margin_start_s"/>
 
     <TextView
         android:id="@+id/single_movie_country"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:textSize="@dimen/font_s"/>
+        android:textSize="@dimen/font_s"
+        android:layout_marginStart="@dimen/margin_start_s"
+        android:layout_marginEnd="@dimen/margin_start_s"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -41,14 +49,18 @@
         android:text="@string/single_movie_genres"
         android:textColor="@color/white"
         android:textSize="@dimen/font_m"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/margin_start_s"
+        android:layout_marginEnd="@dimen/margin_start_s"/>
 
     <TextView
         android:id="@+id/single_movie_genre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:textSize="@dimen/font_s"/>
+        android:textSize="@dimen/font_s"
+        android:layout_marginStart="@dimen/margin_start_s"
+        android:layout_marginEnd="@dimen/margin_start_s"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -56,13 +68,17 @@
         android:text="@string/single_movie_actors"
         android:textColor="@color/white"
         android:textSize="@dimen/font_m"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/margin_start_s"
+        android:layout_marginEnd="@dimen/margin_start_s"/>
 
     <TextView
         android:id="@+id/single_movie_actors"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:textSize="@dimen/font_s"/>
+        android:textSize="@dimen/font_s"
+        android:layout_marginStart="@dimen/margin_start_s"
+        android:layout_marginEnd="@dimen/margin_start_s"/>
 
 </LinearLayout>

@@ -3,6 +3,7 @@ package ru.flicksbox.movie.domain
 import kotlinx.coroutines.flow.Flow
 import ru.flicksbox.data.Data
 import ru.flicksbox.movie.presentation.MovieInteractor
+import ru.flicksbox.user.domain.ResultEntity
 
 class MovieInteractorImpl(private val movieRepository: MovieRepository) : MovieInteractor {
     override fun getUserMovies(): Flow<Data<FavouritesEntity>> {
@@ -19,5 +20,13 @@ class MovieInteractorImpl(private val movieRepository: MovieRepository) : MovieI
 
     override fun getMovie(id: Int): Flow<Data<MovieEntity>> {
         return movieRepository.getMovie(id)
+    }
+
+    override fun addToFavourites(id: Int): Flow<Data<ResultEntity>> {
+        return movieRepository.addToFavourites(id)
+    }
+
+    override fun deleteFromFavourites(id: Int): Flow<Data<ResultEntity>> {
+        return movieRepository.deleteFromFavourites(id)
     }
 }

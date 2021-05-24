@@ -4,6 +4,7 @@ import kotlinx.coroutines.flow.*
 import ru.flicksbox.data.ApiNotRespondingException
 import ru.flicksbox.data.Data
 import ru.flicksbox.movie.domain.*
+import ru.flicksbox.user.domain.ResultEntity
 
 class MovieRepositoryImpl(
     private val movieService: MovieService,
@@ -43,6 +44,25 @@ class MovieRepositoryImpl(
             }
             .map { Data.content(it) }
             .catch { emit(Data.error(it)) }
+
+    override fun addToFavourites(id: Int): Flow<Data<ResultEntity>> =
+        flow { emit(movieService.addToFavorites(FavouritesRequestDTO(id))) }
+            .map { response ->
+                val body = response.body ?: throw ApiNotRespondingException()
+                ResultEntity(true)
+            }
+            .map { Data.content(it) }
+            .catch { emit(Data.error(it)) }
+
+    override fun deleteFromFavourites(id: Int): Flow<Data<ResultEntity>> =
+        flow { emit(movieService.deleteFromFavourites(FavouritesRequestDTO(id))) }
+            .map { response ->
+                val body = response.body ?: throw ApiNotRespondingException()
+                ResultEntity(true)
+            }
+            .map { Data.content(it) }
+            .catch { emit(Data.error(it)) }
+
 }
 
 fun FavouritesWrapperDTO.toDomain(): FavouritesEntity =
