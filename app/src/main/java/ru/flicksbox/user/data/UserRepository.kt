@@ -116,7 +116,7 @@ class UserRepositoryImpl(
             .catch { emit(Data.error(it)) }
 }
 
-private fun LogoutDTO.toDomain(): ResultEntity =
+private fun InfoDTO.toDomain(): ResultEntity =
     ResultEntity(this.error != null)
 
 private fun UserWrapperDTO.toDomain(): UserEntity =

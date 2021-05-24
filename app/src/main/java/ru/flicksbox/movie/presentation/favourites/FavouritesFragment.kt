@@ -1,4 +1,4 @@
-package ru.flicksbox.movie.presentation
+package ru.flicksbox.movie.presentation.favourites
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,11 +16,13 @@ import ru.flicksbox.data.Data
 import ru.flicksbox.movie.domain.FavouritesEntity
 import ru.flicksbox.movie.domain.MovieEntity
 import ru.flicksbox.movie.domain.TVShowEntity
+import ru.flicksbox.movie.presentation.single.MovieClickListener
+import ru.flicksbox.movie.presentation.single.SingleMovieFragment
 import ru.flicksbox.utils.notifyError
 
 const val SPAN_COUNT = 2
 
-class FavouritesFragment : Fragment() {
+class FavouritesFragment : Fragment(), MovieClickListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,7 +31,7 @@ class FavouritesFragment : Fragment() {
         val recycler = view.findViewById<RecyclerView>(R.id.favourites_recycler)
         recycler.layoutManager =
             StaggeredGridLayoutManager(SPAN_COUNT, StaggeredGridLayoutManager.VERTICAL)
-        val adapter = FavouritesAdapter(emptyList())
+        val adapter = FavouritesAdapter(emptyList(), this)
         recycler.adapter = adapter
 
         App.movieInteractor.getUserMovies()
@@ -53,6 +55,13 @@ class FavouritesFragment : Fragment() {
             }.launchIn(CoroutineScope(Dispatchers.Main))
 
         return view
+    }
+
+    override fun onMovieClick(movieID: Int) {
+        val fm = activity?.supportFragmentManager?.beginTransaction() ?: return
+        val fragment = SingleMovieFragment.newInstance(movieID)
+        fm.replace(R.id.favourites_layout, fragment)
+        fm.addToBackStack(null).commit()
     }
 }
 

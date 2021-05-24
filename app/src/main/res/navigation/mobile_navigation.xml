@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_main"
-        android:name="ru.flicksbox.movie.presentation.MainFragment"
+        android:name="ru.flicksbox.movie.presentation.main.MainFragment"
         android:label="@string/title_main"
         tools:layout="@layout/fragment_main" />
 
     <fragment
         android:id="@+id/navigation_favourites"
-        android:name="ru.flicksbox.movie.presentation.FavouritesFragment"
+        android:name="ru.flicksbox.movie.presentation.favourites.FavouritesFragment"
         android:label="@string/title_favourites"
         tools:layout="@layout/fragment_favourites" />
 

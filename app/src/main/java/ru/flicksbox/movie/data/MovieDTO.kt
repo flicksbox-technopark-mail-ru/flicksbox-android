@@ -3,6 +3,7 @@ package ru.flicksbox.movie.data
 import com.google.gson.annotations.SerializedName
 
 data class MoviesWrapperDTO(@SerializedName("movies") val movies: List<MovieDTO>)
+data class MovieWrapperDTO(@SerializedName("movie") val movie: MovieDTO)
 
 data class MovieDTO(
     @SerializedName("actors") val actors: List<ActorDTO>?,

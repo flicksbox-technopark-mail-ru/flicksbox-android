@@ -1,4 +1,4 @@
-package ru.flicksbox.movie.presentation
+package ru.flicksbox.movie.presentation.main
 
 import android.os.Bundle
 import android.util.Log
@@ -17,8 +17,11 @@ import ru.flicksbox.App
 import ru.flicksbox.R
 import ru.flicksbox.data.Data
 import ru.flicksbox.movie.domain.MovieEntity
+import ru.flicksbox.movie.presentation.favourites.MovieViewData
+import ru.flicksbox.movie.presentation.single.MovieClickListener
+import ru.flicksbox.movie.presentation.single.SingleMovieFragment
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment(), MovieClickListener {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,10 +33,10 @@ class MainFragment : Fragment() {
         latestRecycler.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
         val latestData = listOf<MovieViewData>()
-        val latestAdapter = SliderAdapter(latestData)
+        val latestAdapter = SliderAdapter(latestData, this)
         latestRecycler.adapter = latestAdapter
 
-        App.movieInteractor.getLatestMovies(15, 0)
+        App.movieInteractor.getLatestMovies(20, 0)
             .flowOn(Dispatchers.IO)
             .onEach { movies ->
                 when (movies) {
@@ -52,10 +55,10 @@ class MainFragment : Fragment() {
         topRecycler.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
         val topData = listOf<MovieViewData>()
-        val topAdapter = SliderAdapter(topData)
+        val topAdapter = SliderAdapter(topData, this)
         topRecycler.adapter = topAdapter
 
-        App.movieInteractor.getTopMovies(15, 0)
+        App.movieInteractor.getTopMovies(20, 0)
             .flowOn(Dispatchers.IO)
             .onEach { movies ->
                 when (movies) {
@@ -71,6 +74,13 @@ class MainFragment : Fragment() {
             .launchIn(GlobalScope)
 
         return view
+    }
+
+    override fun onMovieClick(movieID: Int) {
+        val fm = activity?.supportFragmentManager?.beginTransaction() ?: return
+        val fragment = SingleMovieFragment.newInstance(movieID)
+        fm.replace(R.id.main_layout, fragment)
+        fm.addToBackStack(null).commit()
     }
 }
 

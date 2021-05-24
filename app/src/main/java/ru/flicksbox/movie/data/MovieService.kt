@@ -1,9 +1,9 @@
 package ru.flicksbox.movie.data
 
-import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Query
+import okhttp3.internal.http.hasBody
+import retrofit2.http.*
 import ru.flicksbox.network.BaseDTO
+import ru.flicksbox.user.data.InfoDTO
 
 interface MovieService {
 
@@ -15,4 +15,13 @@ interface MovieService {
 
     @GET("movies/latest")
     suspend fun getLatestMovies(@Query("count") count: Int, @Query("from") from: Int): BaseDTO<MoviesWrapperDTO>
+
+    @GET("movies/{id}")
+    suspend fun getMovie(@Path("id") id: Int): BaseDTO<MovieWrapperDTO>
+
+    @POST("favourites")
+    suspend fun addToFavorites(@Body contentID : FavouritesRequestDTO): BaseDTO<FavouritesResponseDTO>
+
+    @HTTP(method = "DELETE", path = "favourites", hasBody = true)
+    suspend fun deleteFromFavourites(@Body contentID: FavouritesRequestDTO): InfoDTO
 }

@@ -21,5 +21,5 @@ interface UserService {
     suspend fun updatePassword(@Body password: ProfilePasswordRequestDTO): BaseDTO<UserWrapperDTO>
 
     @DELETE("session")
-    suspend fun logout(): LogoutDTO
+    suspend fun logout(): InfoDTO
 }

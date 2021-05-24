@@ -29,6 +29,6 @@
     <string name="preview_play_btn">Play</string>
     <string name="preview_info_btn">Info</string>
 
-    <string name="content_top">Top content</string>
-    <string name="content_new">New</string>
+    <string name="content_top">Популярные фильмы</string>
+    <string name="content_new">Новые фильмы</string>
 </resources>
