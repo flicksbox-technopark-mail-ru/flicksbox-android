@@ -4,13 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.flicksbox.R
+import ru.flicksbox.movie.presentation.player.PlayClickListener
 
 const val COMPONENTS_COUNT = 3
 const val PREVIEW_VIEW_HOLDER = 0
 const val OPTIONS_VIEW_HOLDER = 1
 const val INFO_VIEW_HOLDER = 2
 
-class ComponentsAdapter :
+class ComponentsAdapter(private val playClickListener: PlayClickListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var dataSource: FullMovieViewData? = null
@@ -55,7 +56,7 @@ class ComponentsAdapter :
     private fun createOptionsViewHolder(parent: ViewGroup): OptionsViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.component_movie_options, parent, false)
-        return OptionsViewHolder(view)
+        return OptionsViewHolder(view, playClickListener)
     }
 
     fun updateData(movie: FullMovieViewData) {

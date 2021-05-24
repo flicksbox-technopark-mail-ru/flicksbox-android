@@ -16,12 +16,15 @@ import ru.flicksbox.App
 import ru.flicksbox.R
 import ru.flicksbox.data.Data
 import ru.flicksbox.movie.domain.MovieEntity
+import ru.flicksbox.movie.presentation.player.PlayClickListener
+import ru.flicksbox.movie.presentation.player.PlayerFragment
 
 const val MOVIE_ID = "movie_id"
 const val DEFAULT_MOVIE_ID = 0
 
-class SingleMovieFragment : Fragment() {
+class SingleMovieFragment : Fragment(), PlayClickListener {
     private var movieID: Int? = null
+    private var movieUrl: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +40,7 @@ class SingleMovieFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_single_movie, container, false)
         val componentsRecycler = view.findViewById<RecyclerView>(R.id.single_movie_recycler)
-        val adapter = ComponentsAdapter()
+        val adapter = ComponentsAdapter(this)
         componentsRecycler.adapter = adapter
         componentsRecycler.layoutManager = LinearLayoutManager(requireContext())
 
@@ -47,6 +50,7 @@ class SingleMovieFragment : Fragment() {
                 when (movie) {
                     is Data.Content -> {
                         adapter.updateData(movie.content.toViewData())
+                        movieUrl = movie.content.video
                     }
 
                     is Data.Error -> {
@@ -70,6 +74,14 @@ class SingleMovieFragment : Fragment() {
                     putInt(MOVIE_ID, movieID)
                 }
             }
+    }
+
+    override fun onPlayClick() {
+        movieUrl?.let {
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.single_movie_layout, PlayerFragment.newInstance(it))
+                ?.addToBackStack(null)?.commit()
+        }
     }
 }
 

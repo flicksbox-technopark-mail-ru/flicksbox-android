@@ -10,3 +10,7 @@ fun buildImageUrl(baseUrl: String): String {
     }
     return IMAGE_API + baseUrl + DEFAULT_SIZE
 }
+
+fun buildVideoUrl(moviePath: String): String {
+    return IMAGE_API + moviePath
+}
