@@ -60,7 +60,7 @@
     <string name="single_movie_country">Country:</string>
     <string name="single_movie_genres">Genre:</string>
     <string name="single_movie_actors">Actors:</string>
-    <string name="title_activity_fullscreen">FullscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="search_sort_year_button">By year</string>
+    <string name="search_sort_rating_button">By rating</string>
+    <string name="title_search">Search</string>
 </resources>

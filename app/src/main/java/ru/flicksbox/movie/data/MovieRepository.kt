@@ -15,9 +15,13 @@ class MovieRepositoryImpl(
         flow { emit(movieService.getTopMovies(count, from)) }
             .map { movies ->
                 val body = movies.body ?: throw ApiNotRespondingException()
-                body.movies.map { it.toDomain() }
+                body.movies.map { it.toDomain() }.forEach {
+                    if (movieDao.updateImage(it.id, it.images) == MOVIE_DOES_NOT_EXIST)
+                        movieDao.insert(it.toDB())
+                }
+                movieDao.getPopular().map { it.toDomain() }
             }
-            .onStart { Data.content(emit(movieDao.getPopular().map { it.toDomain() })) }
+            .onStart { emit(movieDao.getPopular().map { it.toDomain() }) }
             .map { Data.content(it) }
             .catch { emit(Data.error(it)) }
 
@@ -27,9 +31,6 @@ class MovieRepositoryImpl(
                 val body = userList.body ?: throw ApiNotRespondingException()
                 body.favourites.toDomain()
             }
-            .onStart { Data.content(
-                emit(FavouritesEntity(movieDao.getFavorite().map { it.toDomain() }, emptyList()))
-            ) }
             .map { Data.content(it) }
             .catch { emit(Data.error(it)) }
 
@@ -37,9 +38,13 @@ class MovieRepositoryImpl(
         flow { emit(movieService.getLatestMovies(count, from)) }
             .map { movies ->
                 val body = movies.body ?: throw ApiNotRespondingException()
-                body.movies.map { it.toDomain() }
+                body.movies.map { it.toDomain() }.forEach {
+                    if (movieDao.updateImage(it.id, it.images) == MOVIE_DOES_NOT_EXIST)
+                        movieDao.insert(it.toDB())
+                }
+                movieDao.getPopular().map { it.toDomain() }
             }
-            .onStart { Data.content(emit(movieDao.getNew().map { it.toDomain() })) }
+            .onStart { emit(movieDao.getNew().map { it.toDomain() }) }
             .map { Data.content(it) }
             .catch { emit(Data.error(it)) }
 
@@ -49,16 +54,19 @@ class MovieRepositoryImpl(
                 val body = movie.body ?: throw ApiNotRespondingException()
                 val movieEntity = body.movie.toDomain()
                 movieDao.insert(movieEntity.toDB())
-                movieEntity
+                var resultMovie = movieDao.getByID(id)?.toDomain()
+                if (resultMovie == null)
+                    resultMovie = movieEntity
+                resultMovie
             }
-            .onStart { Data.content(emit(movieDao.getByID(id).toDomain())) }
+            .onStart { movieDao.getByID(id)?.toDomain()?.let { emit(it) } }
             .map { Data.content(it) }
             .catch { emit(Data.error(it)) }
 
     override fun addToFavourites(id: Int): Flow<Data<ResultEntity>> =
         flow { emit(movieService.addToFavorites(FavouritesRequestDTO(id))) }
             .map { response ->
-                val body = response.body ?: throw ApiNotRespondingException()
+                response.body ?: throw ApiNotRespondingException()
                 ResultEntity(true)
             }
             .map { Data.content(it) }
@@ -67,12 +75,24 @@ class MovieRepositoryImpl(
     override fun deleteFromFavourites(id: Int): Flow<Data<ResultEntity>> =
         flow { emit(movieService.deleteFromFavourites(FavouritesRequestDTO(id))) }
             .map { response ->
-                val body = response.body ?: throw ApiNotRespondingException()
+                response.body ?: throw ApiNotRespondingException()
                 ResultEntity(true)
             }
             .map { Data.content(it) }
             .catch { emit(Data.error(it)) }
 
+    override fun getMoviesByQuery(
+        query: String,
+        count: Int,
+        from: Int
+    ): Flow<Data<FavouritesEntity>> =
+        flow { emit(movieService.getMoviesByQuery(query, count, from)) }
+            .map { response ->
+                val body = response.body ?: throw ApiNotRespondingException()
+                body.result.toDomain()
+            }
+            .map { Data.content(it) }
+            .catch { emit(Data.error(it)) }
 }
 
 fun FavouritesWrapperDTO.toDomain(): FavouritesEntity =
@@ -136,7 +156,10 @@ fun DirectorDTO.toDomain(): DirectorEntity =
 fun GenreDTO.toDomain(): GenreEntity =
     GenreEntity(this.id, this.name)
 
-fun MovieEntity.toDB(isNew: Boolean = false, isPopular: Boolean = false): MovieDB =
+fun MovieEntity.toDB(
+    isNew: Boolean = false,
+    isPopular: Boolean = false
+): MovieDB =
     MovieDB(
         this.id,
         this.actors?.map { ActorDB(it.id, it.name) } ?: emptyList(),
@@ -146,7 +169,7 @@ fun MovieEntity.toDB(isNew: Boolean = false, isPopular: Boolean = false): MovieD
         this.directors?.map { DirectorDB(it.id, it.name) } ?: emptyList(),
         this.genres?.map { GenreDB(it.id, it.name) } ?: emptyList(),
         this.images,
-        this.isFavorite,
+        false,
         this.name,
         this.video,
         isNew,
@@ -166,7 +189,7 @@ fun MovieDB.toDomain(): MovieEntity =
         this.genres.map { GenreEntity(it.id, it.name) },
         this.contentID,
         this.images,
-        this.isFavorite,
+        false,
         false,
         false,
         this.name,
@@ -176,4 +199,10 @@ fun MovieDB.toDomain(): MovieEntity =
         this.type,
         this.video,
         this.year
+    )
+
+fun QueryResultDTO.toDomain(): FavouritesEntity =
+    FavouritesEntity(
+        this.movies.map { it.toDomain() },
+        this.tvShows.map { it.toDomain() }
     )

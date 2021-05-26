@@ -41,4 +41,8 @@
     <string name="single_movie_genres">Жанр:</string>
     <string name="single_movie_actors">Актёры:</string>
     <string name="content_director">Квентин Тарантино</string>
+
+    <string name="search_sort_year_button">По году</string>
+    <string name="search_sort_rating_button">По популярности</string>
+    <string name="title_search">Поиск</string>
 </resources>

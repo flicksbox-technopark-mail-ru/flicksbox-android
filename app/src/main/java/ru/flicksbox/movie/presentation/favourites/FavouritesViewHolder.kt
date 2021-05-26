@@ -5,7 +5,6 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.squareup.picasso.Picasso
 import ru.flicksbox.R
 import ru.flicksbox.movie.presentation.single.MovieClickListener
 import ru.flicksbox.utils.buildImageUrl
@@ -13,6 +12,8 @@ import ru.flicksbox.utils.buildImageUrl
 data class MovieViewData(
     val images: String,
     val id: Int,
+    val rating: String,
+    val year: Int,
 )
 
 class FavouritesViewHolder(itemView: View,

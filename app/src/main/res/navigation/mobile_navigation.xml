@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_main" />
 
     <fragment
+        android:id="@+id/navigation_search"
+        android:name="ru.flicksbox.movie.presentation.search.SearchFragment"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
         android:id="@+id/navigation_favourites"
         android:name="ru.flicksbox.movie.presentation.favourites.FavouritesFragment"
         android:label="@string/title_favourites"

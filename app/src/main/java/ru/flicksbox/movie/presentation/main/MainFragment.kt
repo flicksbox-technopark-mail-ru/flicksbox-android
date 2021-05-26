@@ -85,4 +85,4 @@ class MainFragment : Fragment(), MovieClickListener {
 }
 
 fun MovieEntity.toViewData(): MovieViewData =
-    MovieViewData(this.images, this.id)
+    MovieViewData(this.images, this.id, this.rating, this.year)

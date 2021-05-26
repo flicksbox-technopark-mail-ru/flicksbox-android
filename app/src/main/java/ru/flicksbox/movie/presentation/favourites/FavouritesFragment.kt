@@ -68,10 +68,10 @@ class FavouritesFragment : Fragment(), MovieClickListener {
 fun FavouritesEntity.toViewData(): List<MovieViewData> {
     val result = mutableListOf<MovieViewData>()
     for (movie: MovieEntity in this.movies) {
-        result.add(MovieViewData(movie.images, movie.id))
+        result.add(MovieViewData(movie.images, movie.id, movie.rating, movie.year))
     }
     for (tvShow: TVShowEntity in this.tvShows) {
-        result.add(MovieViewData(tvShow.images, tvShow.id))
+        result.add(MovieViewData(tvShow.images, tvShow.id, tvShow.rating, tvShow.year))
     }
     return result
 }

@@ -29,4 +29,8 @@ class MovieInteractorImpl(private val movieRepository: MovieRepository) : MovieI
     override fun deleteFromFavourites(id: Int): Flow<Data<ResultEntity>> {
         return movieRepository.deleteFromFavourites(id)
     }
+
+    override fun getMoviesByQuery(query: String, count: Int, from: Int): Flow<Data<FavouritesEntity>> {
+        return movieRepository.getMoviesByQuery(query, count, from)
+    }
 }

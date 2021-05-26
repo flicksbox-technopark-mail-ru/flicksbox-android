@@ -13,4 +13,5 @@ interface MovieInteractor {
     fun getMovie(id :Int): Flow<Data<MovieEntity>>
     fun addToFavourites(id: Int): Flow<Data<ResultEntity>>
     fun deleteFromFavourites(id: Int): Flow<Data<ResultEntity>>
+    fun getMoviesByQuery(query: String, count: Int, from: Int): Flow<Data<FavouritesEntity>>
 }

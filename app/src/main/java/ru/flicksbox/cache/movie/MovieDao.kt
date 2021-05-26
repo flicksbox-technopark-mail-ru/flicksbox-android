@@ -2,6 +2,8 @@ package ru.flicksbox.cache.movie
 
 import androidx.room.*
 
+const val MOVIE_DOES_NOT_EXIST = 0
+
 @Dao
 interface MovieDao {
 
@@ -15,10 +17,10 @@ interface MovieDao {
     fun getPopular(): List<MovieDB>
 
     @Query("SELECT * FROM movies WHERE movie_id = :id")
-    fun getByID(id: Int): MovieDB
+    fun getByID(id: Int): MovieDB?
 
-    @Query("SELECT * FROM movies WHERE is_favorite = 1")
-    fun getFavorite(): List<MovieDB>
+    @Query("UPDATE movies SET images = :image WHERE movie_id = :id")
+    fun updateImage(id: Int, image: String): Int
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(movie: MovieDB)

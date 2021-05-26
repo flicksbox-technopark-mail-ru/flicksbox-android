@@ -7,6 +7,8 @@ import ru.flicksbox.App
 import ru.flicksbox.cache.movie.MovieDB
 import ru.flicksbox.cache.movie.MovieDao
 
+const val DATABASE_NAME = "movie_database"
+
 @Database(entities = [MovieDB::class], version = 2, exportSchema = false)
 abstract class MovieDatabase : RoomDatabase() {
     abstract val movieDao: MovieDao
@@ -20,7 +22,7 @@ abstract class MovieDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     App.appContext(),
                     MovieDatabase::class.java,
-                    "movie_database"
+                    DATABASE_NAME
                 ).build()
                 INSTANCE = instance
                 instance

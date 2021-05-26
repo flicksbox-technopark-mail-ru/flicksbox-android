@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/filter_buttons_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/search_sort_year_button"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="@dimen/margin_start_s"
+        android:layout_marginTop="@dimen/margin_start_s"
+        android:layout_marginEnd="@dimen/margin_start_s"
+        android:layout_marginBottom="@dimen/margin_start_s"
+        android:background="@drawable/form_btn_shape"
+        android:text="@string/search_sort_year_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></com.google.android.material.button.MaterialButton>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/search_sort_rating_button"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="@dimen/margin_start_s"
+        android:layout_marginTop="@dimen/margin_start_s"
+        android:layout_marginEnd="@dimen/margin_start_s"
+        android:layout_marginBottom="@dimen/margin_start_s"
+        android:background="@drawable/form_btn_shape"
+        android:text="@string/search_sort_rating_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></com.google.android.material.button.MaterialButton>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
