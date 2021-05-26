@@ -1,6 +1,7 @@
 package ru.flicksbox.movie.data
 
 import kotlinx.coroutines.flow.*
+import ru.flicksbox.cache.movie.*
 import ru.flicksbox.data.ApiNotRespondingException
 import ru.flicksbox.data.Data
 import ru.flicksbox.movie.domain.*
@@ -8,6 +9,7 @@ import ru.flicksbox.user.domain.ResultEntity
 
 class MovieRepositoryImpl(
     private val movieService: MovieService,
+    private val movieDao: MovieDao
 ) : MovieRepository {
     override fun getTopMovies(count: Int, from: Int): Flow<Data<List<MovieEntity>>> =
         flow { emit(movieService.getTopMovies(count, from)) }
@@ -15,6 +17,7 @@ class MovieRepositoryImpl(
                 val body = movies.body ?: throw ApiNotRespondingException()
                 body.movies.map { it.toDomain() }
             }
+            .onStart { Data.content(emit(movieDao.getPopular().map { it.toDomain() })) }
             .map { Data.content(it) }
             .catch { emit(Data.error(it)) }
 
@@ -24,6 +27,9 @@ class MovieRepositoryImpl(
                 val body = userList.body ?: throw ApiNotRespondingException()
                 body.favourites.toDomain()
             }
+            .onStart { Data.content(
+                emit(FavouritesEntity(movieDao.getFavorite().map { it.toDomain() }, emptyList()))
+            ) }
             .map { Data.content(it) }
             .catch { emit(Data.error(it)) }
 
@@ -33,6 +39,7 @@ class MovieRepositoryImpl(
                 val body = movies.body ?: throw ApiNotRespondingException()
                 body.movies.map { it.toDomain() }
             }
+            .onStart { Data.content(emit(movieDao.getNew().map { it.toDomain() })) }
             .map { Data.content(it) }
             .catch { emit(Data.error(it)) }
 
@@ -40,8 +47,11 @@ class MovieRepositoryImpl(
         flow { emit(movieService.getMovie(id)) }
             .map { movie ->
                 val body = movie.body ?: throw ApiNotRespondingException()
-                body.movie.toDomain()
+                val movieEntity = body.movie.toDomain()
+                movieDao.insert(movieEntity.toDB())
+                movieEntity
             }
+            .onStart { Data.content(emit(movieDao.getByID(id).toDomain())) }
             .map { Data.content(it) }
             .catch { emit(Data.error(it)) }
 
@@ -126,3 +136,44 @@ fun DirectorDTO.toDomain(): DirectorEntity =
 fun GenreDTO.toDomain(): GenreEntity =
     GenreEntity(this.id, this.name)
 
+fun MovieEntity.toDB(isNew: Boolean = false, isPopular: Boolean = false): MovieDB =
+    MovieDB(
+        this.id,
+        this.actors?.map { ActorDB(it.id, it.name) } ?: emptyList(),
+        this.contentID,
+        this.countries?.map { CountryDB(it.id, it.name) } ?: emptyList(),
+        this.description,
+        this.directors?.map { DirectorDB(it.id, it.name) } ?: emptyList(),
+        this.genres?.map { GenreDB(it.id, it.name) } ?: emptyList(),
+        this.images,
+        this.isFavorite,
+        this.name,
+        this.video,
+        isNew,
+        isPopular,
+        this.year,
+        this.rating,
+        this.type
+    )
+
+fun MovieDB.toDomain(): MovieEntity =
+    MovieEntity(
+        this.actors.map { ActorEntity(it.id, it.name) },
+        this.contentID,
+        this.countries.map { CountryEntity(it.id, it.name) },
+        this.description,
+        this.directors.map { DirectorEntity(it.id, it.name) },
+        this.genres.map { GenreEntity(it.id, it.name) },
+        this.contentID,
+        this.images,
+        this.isFavorite,
+        false,
+        false,
+        this.name,
+        this.name,
+        this.rating,
+        this.description,
+        this.type,
+        this.video,
+        this.year
+    )
