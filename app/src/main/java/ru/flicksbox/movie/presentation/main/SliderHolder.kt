@@ -4,6 +4,8 @@ import android.view.View
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.squareup.picasso.Picasso
 import ru.flicksbox.R
 import ru.flicksbox.movie.presentation.favourites.MovieViewData
@@ -17,9 +19,9 @@ class SliderHolder(itemView: View, private val listener: MovieClickListener) :
 
     fun bind(value: MovieViewData) {
         val path = buildImageUrl(value.images)
-        Picasso
-            .with(itemView.context)
+        Glide.with(itemView)
             .load(path)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(cardPoster)
         cardPoster.contentDescription = value.id.toString()
 
