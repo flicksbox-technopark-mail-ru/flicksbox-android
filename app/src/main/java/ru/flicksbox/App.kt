@@ -2,6 +2,7 @@ package ru.flicksbox
 
 import android.app.Application
 import android.content.Context
+import ru.flicksbox.cache.MovieDatabase
 import ru.flicksbox.movie.data.MovieRepositoryImpl
 import ru.flicksbox.movie.data.MovieService
 import ru.flicksbox.movie.domain.MovieInteractorImpl
@@ -19,6 +20,7 @@ class App : Application() {
         lateinit var networkServiceFactory: NetworkServiceFactory
         lateinit var userInteractor: UserInteractor
         lateinit var movieInteractor: MovieInteractor
+        val database by lazy {MovieDatabase.getInstance()}
 
         fun appContext(): Context {
             return instance
@@ -33,7 +35,7 @@ class App : Application() {
 
     private fun initMovieInteractor() {
         val movieService = networkServiceFactory.createService(MovieService::class.java)
-        val movieRepository = MovieRepositoryImpl(movieService)
+        val movieRepository = MovieRepositoryImpl(movieService, database.movieDao)
         movieInteractor = MovieInteractorImpl(movieRepository)
     }
 
