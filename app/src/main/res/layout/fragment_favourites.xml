@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/favourites_layout"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/main"
+    android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/favourites_recycler"
+    <TextView
+        android:id="@+id/profile_label_nickname_val"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/main"
-        tools:context=".movie.presentation.favourites.FavouritesFragment" />
-</RelativeLayout>
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gilroy_f"
+        android:paddingTop="@dimen/margin_start_s"
+        android:paddingBottom="@dimen/margin_start_s"
+        android:text="@string/title_favourites"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_m" />
+
+    <RelativeLayout
+        android:id="@+id/favourites_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/favourites_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".movie.presentation.favourites.FavouritesFragment" />
+    </RelativeLayout>
+</LinearLayout>

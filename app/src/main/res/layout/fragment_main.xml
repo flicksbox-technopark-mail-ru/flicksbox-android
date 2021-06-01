@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:text="@string/content_top"
             android:textColor="@color/white"
+            android:fontFamily="@font/gilroy_f"
             android:textSize="@dimen/font_m"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/slider_content_top_wrapper"
@@ -44,6 +45,7 @@
             android:layout_height="wrap_content"
             android:text="@string/content_new"
             android:textColor="@color/white"
+            android:fontFamily="@font/gilroy_f"
             android:textSize="@dimen/font_m"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/slider_content_latest_wrapper"

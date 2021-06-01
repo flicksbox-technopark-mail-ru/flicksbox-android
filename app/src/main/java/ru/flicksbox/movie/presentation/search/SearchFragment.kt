@@ -15,8 +15,6 @@ import kotlinx.coroutines.flow.onEach
 import ru.flicksbox.App
 import ru.flicksbox.R
 import ru.flicksbox.data.Data
-import ru.flicksbox.movie.domain.FavouritesEntity
-import ru.flicksbox.movie.presentation.favourites.MovieViewData
 import ru.flicksbox.movie.presentation.favourites.toViewData
 import ru.flicksbox.movie.presentation.single.MovieClickListener
 import ru.flicksbox.movie.presentation.single.SingleMovieFragment
