@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.*
 import androidx.fragment.app.Fragment
 import com.google.android.exoplayer2.MediaItem
@@ -38,6 +39,10 @@ class PlayerFragment : Fragment() {
         arguments?.let {
             mediaUrl = it.getString(MEDIA_URL)
         }
+        val inflater = TransitionInflater.from(requireContext())
+        enterTransition = inflater.inflateTransition(R.transition.fade_in)
+        exitTransition = inflater.inflateTransition(R.transition.fade_out)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

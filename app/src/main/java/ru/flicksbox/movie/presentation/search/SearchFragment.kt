@@ -1,6 +1,7 @@
 package ru.flicksbox.movie.presentation.search
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,13 @@ import ru.flicksbox.movie.presentation.single.SingleMovieFragment
 class SearchFragment : Fragment(), MovieClickListener, SearchQueryInputListener {
     private var adapter: SearchAdapter? = null
     private var lastQuery : String = ""
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val inflater = TransitionInflater.from(requireContext())
+        enterTransition = inflater.inflateTransition(R.transition.fade_in)
+        exitTransition = inflater.inflateTransition(R.transition.fade_out)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

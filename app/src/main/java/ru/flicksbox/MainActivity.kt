@@ -1,6 +1,7 @@
 package ru.flicksbox
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
