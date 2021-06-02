@@ -29,7 +29,6 @@ class FavouritesFragment : Fragment(), MovieClickListener {
         val inflater = TransitionInflater.from(requireContext())
         enterTransition = inflater.inflateTransition(R.transition.fade_in)
         exitTransition = inflater.inflateTransition(R.transition.fade_out)
-
     }
 
     override fun onCreateView(
@@ -67,10 +66,10 @@ class FavouritesFragment : Fragment(), MovieClickListener {
     }
 
     override fun onMovieClick(movieID: Int) {
-        val fm = activity?.supportFragmentManager?.beginTransaction() ?: return
+        val fragmentTransaction = activity?.supportFragmentManager?.beginTransaction() ?: return
         val fragment = SingleMovieFragment.newInstance(movieID)
-        fm.replace(R.id.favourites_layout, fragment)
-        fm.addToBackStack(null).commit()
+        fragmentTransaction.replace(R.id.favourites_layout, fragment)
+        fragmentTransaction.addToBackStack(null).commit()
     }
 }
 

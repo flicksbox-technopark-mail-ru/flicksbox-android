@@ -87,10 +87,10 @@ class MainFragment : Fragment(), MovieClickListener {
     }
 
     override fun onMovieClick(movieID: Int) {
-        val fm = activity?.supportFragmentManager?.beginTransaction() ?: return
+        val fragmentTransaction = activity?.supportFragmentManager?.beginTransaction() ?: return
         val fragment = SingleMovieFragment.newInstance(movieID)
-        fm.replace(R.id.main_layout, fragment)
-        fm.addToBackStack(null).commit()
+        fragmentTransaction.replace(R.id.main_layout, fragment)
+        fragmentTransaction.addToBackStack(null).commit()
     }
 }
 

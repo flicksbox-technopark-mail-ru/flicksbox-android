@@ -45,10 +45,10 @@ class SearchFragment : Fragment(), MovieClickListener, SearchQueryInputListener 
     }
 
     override fun onMovieClick(movieID: Int) {
-        val fm = activity?.supportFragmentManager?.beginTransaction() ?: return
+        val fragmentTransaction = activity?.supportFragmentManager?.beginTransaction() ?: return
         val fragment = SingleMovieFragment.newInstance(movieID)
-        fm.replace(R.id.search_fragment_layout, fragment)
-        fm.addToBackStack(null).commit()
+        fragmentTransaction.replace(R.id.search_fragment_layout, fragment)
+        fragmentTransaction.addToBackStack(null).commit()
     }
 
     override fun onSearchQueryInput(query: String) {
