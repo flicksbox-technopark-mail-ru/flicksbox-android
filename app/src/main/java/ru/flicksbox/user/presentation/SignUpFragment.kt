@@ -18,6 +18,7 @@ import kotlinx.coroutines.flow.onEach
 import ru.flicksbox.App
 import ru.flicksbox.R
 import ru.flicksbox.data.Data
+import ru.flicksbox.utils.hideKeyboardFrom
 import ru.flicksbox.utils.notifyError
 
 private const val USERNAME_INPUT = "username_input"
@@ -79,7 +80,6 @@ class SignUpFragment : Fragment() {
                     is Data.Error -> {
                         activity?.runOnUiThread { notifyError(user.throwable, requireContext()) }
                     }
-                    is Data.Loading -> Log.d("HERE", user.toString())
                     is Data.Content -> {
                         openProfileFragment()
                     }
@@ -92,6 +92,7 @@ class SignUpFragment : Fragment() {
         activity?.supportFragmentManager?.beginTransaction()
             ?.replace(R.id.profile_layout, ProfileFragment())
             ?.addToBackStack(null)?.commit()
+        view?.let { view -> context?.let { context -> hideKeyboardFrom(context, view) } }
     }
 
     private fun handleLoginButtonClick() {

@@ -1,6 +1,5 @@
 package ru.flicksbox.movie.data
 
-import android.util.Log
 import kotlinx.coroutines.flow.*
 import ru.flicksbox.cache.movie.*
 import ru.flicksbox.data.ApiNotRespondingException
@@ -43,7 +42,7 @@ class MovieRepositoryImpl(
                     if (movieDao.updateImage(it.id, it.images) == MOVIE_DOES_NOT_EXIST)
                         movieDao.insert(it.toDB())
                 }
-                movieDao.getPopular().map { it.toDomain() }
+                movieDao.getNew().map { it.toDomain() }
             }
             .onStart { emit(movieDao.getNew().map { it.toDomain() }) }
             .map { Data.content(it) }
@@ -170,7 +169,7 @@ fun MovieEntity.toDB(
         this.directors?.map { DirectorDB(it.id, it.name) } ?: emptyList(),
         this.genres?.map { GenreDB(it.id, it.name) } ?: emptyList(),
         this.images,
-        false,
+        this.isFavorite,
         this.name,
         this.video,
         isNew,
@@ -190,7 +189,7 @@ fun MovieDB.toDomain(): MovieEntity =
         this.genres.map { GenreEntity(it.id, it.name) },
         this.contentID,
         this.images,
-        false,
+        this.isFavorite,
         false,
         false,
         this.name,

@@ -5,6 +5,8 @@ import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.ViewSwitcher
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -24,6 +26,7 @@ import ru.flicksbox.utils.notifyError
 const val SPAN_COUNT = 2
 
 class FavouritesFragment : Fragment(), MovieClickListener {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val inflater = TransitionInflater.from(requireContext())
@@ -36,6 +39,7 @@ class FavouritesFragment : Fragment(), MovieClickListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_favourites, container, false)
+        val viewSwitcher = view.findViewById<ViewSwitcher>(R.id.favourites_switcher)
         val recycler = view.findViewById<RecyclerView>(R.id.favourites_recycler)
         recycler.layoutManager =
             StaggeredGridLayoutManager(SPAN_COUNT, StaggeredGridLayoutManager.VERTICAL)
@@ -49,15 +53,8 @@ class FavouritesFragment : Fragment(), MovieClickListener {
                     is Data.Content -> {
                         adapter.updateData(favouritesData.content.toViewData())
                     }
-
-                    is Data.Loading -> {
-
-                    }
-
                     is Data.Error -> {
-                        activity?.runOnUiThread {
-                            notifyError(favouritesData.throwable, requireContext())
-                        }
+                        viewSwitcher.showNext()
                     }
                 }
             }.launchIn(CoroutineScope(Dispatchers.Main))

@@ -19,6 +19,7 @@ import ru.flicksbox.App
 import ru.flicksbox.R
 import ru.flicksbox.data.Data
 import ru.flicksbox.utils.buildImageUrl
+import ru.flicksbox.utils.hideKeyboardFrom
 import ru.flicksbox.utils.notifyError
 
 private const val NICKNAME_INPUT = "username_input"
@@ -133,7 +134,6 @@ class ProfileFragment : Fragment() {
                                 requireContext()
                             )
                         }
-                        is Data.Loading -> Log.d("HERE", user.toString())
                         is Data.Content -> {
                             activity?.runOnUiThread {
                                 Toast.makeText(
@@ -149,12 +149,12 @@ class ProfileFragment : Fragment() {
                             if (email.isNotEmpty()) activity?.runOnUiThread(java.lang.Runnable {
                                 emailLabel.setText(user.content.email)
                             })
-                            Log.d("HERE", user.toString())
                         }
                     }
                 }
                 .launchIn(GlobalScope)
         })
+        view?.let { view -> context?.let { context -> hideKeyboardFrom(context, view) } }
     }
 
     private fun handleSavePasswordChanges() {
@@ -172,7 +172,6 @@ class ProfileFragment : Fragment() {
                             requireContext()
                         )
                     }
-                    is Data.Loading -> Log.d("HERE", user.toString())
                     is Data.Content -> activity?.runOnUiThread {
                         Toast.makeText(
                             requireContext(),
@@ -183,6 +182,7 @@ class ProfileFragment : Fragment() {
                 }
             }
             .launchIn(GlobalScope)
+        view?.let { view -> context?.let { context -> hideKeyboardFrom(context, view) } }
     }
 
     private fun restoreState(savedInstanceState: Bundle?) {
@@ -210,7 +210,6 @@ class ProfileFragment : Fragment() {
             .onEach { result ->
                 when (result) {
                     is Data.Content -> openLoginFragment()
-                    is Data.Error -> Log.d("HERE", result.throwable.toString())
                 }
             }.launchIn(CoroutineScope(Dispatchers.Main))
     }

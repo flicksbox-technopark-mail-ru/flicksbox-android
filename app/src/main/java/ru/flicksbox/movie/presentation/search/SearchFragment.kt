@@ -19,6 +19,7 @@ import ru.flicksbox.data.Data
 import ru.flicksbox.movie.presentation.favourites.toViewData
 import ru.flicksbox.movie.presentation.single.MovieClickListener
 import ru.flicksbox.movie.presentation.single.SingleMovieFragment
+import ru.flicksbox.utils.hideKeyboardFrom
 
 class SearchFragment : Fragment(), MovieClickListener, SearchQueryInputListener {
     private var adapter: SearchAdapter? = null
@@ -49,6 +50,7 @@ class SearchFragment : Fragment(), MovieClickListener, SearchQueryInputListener 
         val fragment = SingleMovieFragment.newInstance(movieID)
         fragmentTransaction.replace(R.id.search_fragment_layout, fragment)
         fragmentTransaction.addToBackStack(null).commit()
+        view?.let { view -> context?.let { context -> hideKeyboardFrom(context, view) } }
     }
 
     override fun onSearchQueryInput(query: String) {
@@ -57,7 +59,10 @@ class SearchFragment : Fragment(), MovieClickListener, SearchQueryInputListener 
             .flowOn(Dispatchers.IO)
             .onEach { result ->
                 when (result) {
-                    is Data.Content -> adapter?.updateData(result.content.toViewData(), lastQuery)
+                    is Data.Content -> {
+                        result.content.tvShows = emptyList()
+                        adapter?.updateData(result.content.toViewData(), lastQuery)
+                    }
                 }
             }.launchIn(CoroutineScope(Dispatchers.Main))
     }
