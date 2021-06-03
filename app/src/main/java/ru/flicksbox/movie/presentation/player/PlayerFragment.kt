@@ -1,6 +1,5 @@
 package ru.flicksbox.movie.presentation.player
 
-import android.app.Activity
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.Bundle

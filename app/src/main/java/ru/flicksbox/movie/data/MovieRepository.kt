@@ -67,6 +67,7 @@ class MovieRepositoryImpl(
         flow { emit(movieService.addToFavorites(FavouritesRequestDTO(id))) }
             .map { response ->
                 response.body ?: throw ApiNotRespondingException()
+                movieDao.updateFavourite(id, true)
                 ResultEntity(true)
             }
             .map { Data.content(it) }
@@ -76,6 +77,7 @@ class MovieRepositoryImpl(
         flow { emit(movieService.deleteFromFavourites(FavouritesRequestDTO(id))) }
             .map { response ->
                 response.body ?: throw ApiNotRespondingException()
+                movieDao.updateFavourite(id, false)
                 ResultEntity(true)
             }
             .map { Data.content(it) }

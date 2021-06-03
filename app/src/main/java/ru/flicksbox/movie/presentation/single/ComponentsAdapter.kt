@@ -41,7 +41,7 @@ class ComponentsAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return position % COMPONENTS_COUNT
+        return position
     }
 
     private fun createPreviewViewHolder(parent: ViewGroup): PreviewViewHolder {
