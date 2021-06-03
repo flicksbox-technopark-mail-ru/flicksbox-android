@@ -22,6 +22,9 @@ interface MovieDao {
     @Query("UPDATE movies SET images = :image WHERE movie_id = :id")
     fun updateImage(id: Int, image: String): Int
 
+    @Query("UPDATE movies SET is_favorite = :isFavourite WHERE movie_id = :id")
+    fun updateFavourite(id : Int, isFavourite : Boolean)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(movie: MovieDB)
 

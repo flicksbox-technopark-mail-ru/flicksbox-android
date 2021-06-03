@@ -34,6 +34,11 @@ class FavouritesFragment : Fragment(), MovieClickListener {
         exitTransition = inflater.inflateTransition(R.transition.fade_out)
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

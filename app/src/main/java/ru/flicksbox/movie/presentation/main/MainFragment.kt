@@ -2,13 +2,13 @@ package ru.flicksbox.movie.presentation.main
 
 import android.os.Bundle
 import android.transition.TransitionInflater
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.flowOn
@@ -69,13 +69,11 @@ class MainFragment : Fragment(), MovieClickListener {
             .onEach { movies ->
                 when (movies) {
                     is Data.Content -> {
-                        activity?.runOnUiThread {
-                            topAdapter.updateData(movies.content.map { it.toViewData() })
-                        }
+                        topAdapter.updateData(movies.content.map { it.toViewData() })
                     }
                 }
             }
-            .launchIn(GlobalScope)
+            .launchIn(CoroutineScope(Dispatchers.Main))
 
         return view
     }
@@ -83,7 +81,7 @@ class MainFragment : Fragment(), MovieClickListener {
     override fun onMovieClick(movieID: Int) {
         val fragmentTransaction = activity?.supportFragmentManager?.beginTransaction() ?: return
         val fragment = SingleMovieFragment.newInstance(movieID)
-        fragmentTransaction.replace(R.id.main_layout, fragment)
+        fragmentTransaction.replace(R.id.nav_host_fragment, fragment)
         fragmentTransaction.addToBackStack(null).commit()
     }
 }

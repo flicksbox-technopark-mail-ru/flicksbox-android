@@ -79,7 +79,7 @@ class SingleMovieFragment : Fragment(), PlayClickListener, FavouritesClickListen
     override fun onPlayClick() {
         movieUrl?.let {
             activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.single_movie_layout, PlayerFragment.newInstance(it))
+                ?.replace(R.id.nav_host_fragment, PlayerFragment.newInstance(it))
                 ?.addToBackStack(null)?.commit()
         }
     }
