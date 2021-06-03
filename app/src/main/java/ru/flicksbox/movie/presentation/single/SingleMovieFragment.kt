@@ -60,9 +60,6 @@ class SingleMovieFragment : Fragment(), PlayClickListener, FavouritesClickListen
                         adapter.updateData(movie.content.toViewData())
                         movieUrl = movie.content.video
                     }
-                    is Data.Error -> {
-                        Log.d("Logging", movie.throwable.stackTraceToString())
-                    }
                 }
             }.launchIn(CoroutineScope(Dispatchers.Main))
 

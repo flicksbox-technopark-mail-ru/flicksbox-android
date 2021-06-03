@@ -45,4 +45,5 @@
     <string name="search_sort_year_button">По году</string>
     <string name="search_sort_rating_button">По популярности</string>
     <string name="title_search">Поиск</string>
+    <string name="not_authorized_message">Вы не авторизованы, пожалуйста войдите в аккаунт, чтобы увидеть избранное</string>
 </resources>

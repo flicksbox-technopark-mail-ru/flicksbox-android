@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Dispatchers
@@ -29,7 +28,6 @@ class MainFragment : Fragment(), MovieClickListener {
         val inflater = TransitionInflater.from(requireContext())
         enterTransition = inflater.inflateTransition(R.transition.fade_in)
         exitTransition = inflater.inflateTransition(R.transition.fade_out)
-
     }
 
     override fun onCreateView(
@@ -50,8 +48,6 @@ class MainFragment : Fragment(), MovieClickListener {
             .flowOn(Dispatchers.IO)
             .onEach { movies ->
                 when (movies) {
-                    is Data.Error -> Log.d("HERE", movies.toString())
-                    is Data.Loading -> Log.d("HERE", movies.toString())
                     is Data.Content -> {
                         activity?.runOnUiThread {
                             latestAdapter.updateData(movies.content.map { it.toViewData() })
@@ -72,8 +68,6 @@ class MainFragment : Fragment(), MovieClickListener {
             .flowOn(Dispatchers.IO)
             .onEach { movies ->
                 when (movies) {
-                    is Data.Error -> Log.d("HERE", movies.toString())
-                    is Data.Loading -> Log.d("HERE", movies.toString())
                     is Data.Content -> {
                         activity?.runOnUiThread {
                             topAdapter.updateData(movies.content.map { it.toViewData() })
