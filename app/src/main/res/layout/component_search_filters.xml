@@ -5,30 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/search_sort_year_button"
+    <androidx.appcompat.widget.AppCompatButton
         android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="@dimen/margin_start_s"
-        android:layout_marginTop="@dimen/margin_start_s"
-        android:layout_marginEnd="@dimen/margin_start_s"
-        android:layout_marginBottom="@dimen/margin_start_s"
+        android:layout_height="50dp"
+        android:layout_margin="@dimen/margin_start_s"
         android:background="@drawable/form_btn_shape"
         android:text="@string/search_sort_year_button"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:fontFamily="@font/gilroy_f"
+        android:id="@+id/search_sort_year_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></com.google.android.material.button.MaterialButton>
+        app:layout_constraintTop_toTopOf="parent">
+    </androidx.appcompat.widget.AppCompatButton>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/search_sort_rating_button"
+    <androidx.appcompat.widget.AppCompatButton
         android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="@dimen/margin_start_s"
-        android:layout_marginTop="@dimen/margin_start_s"
-        android:layout_marginEnd="@dimen/margin_start_s"
-        android:layout_marginBottom="@dimen/margin_start_s"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/margin_start_s"
         android:background="@drawable/form_btn_shape"
+        android:fontFamily="@font/gilroy_f"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:text="@string/search_sort_rating_button"
+        android:id="@+id/search_sort_rating_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></com.google.android.material.button.MaterialButton>
+        app:layout_constraintTop_toTopOf="parent">
+    </androidx.appcompat.widget.AppCompatButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

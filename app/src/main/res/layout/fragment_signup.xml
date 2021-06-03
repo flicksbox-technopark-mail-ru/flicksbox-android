@@ -16,6 +16,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:textSize="@dimen/font_m"
+            android:fontFamily="@font/gilroy_f"
             android:textColor="@color/white"
             android:text="@string/registration_TextView_title" /><!-- TODO: возможно можно в RecyclerView пары объединить -->
         <TextView
@@ -23,6 +24,7 @@
             android:labelFor="@id/registration_EditText_username"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/gilroy_f"
             android:layout_marginBottom="@dimen/margin_label_bottom"
             android:text="@string/registration_TextView_username"
             android:textColor="@color/white"/>
@@ -30,6 +32,7 @@
             android:id="@+id/registration_EditText_username"
             android:inputType="text"
             android:layout_height="40dp"
+            android:fontFamily="@font/gilroy_f"
             android:layout_width="match_parent"
             android:layout_marginBottom="@dimen/margin_bottom"
             android:background="@drawable/text_edit_shape"
@@ -39,6 +42,7 @@
             android:labelFor="@id/registration_EditText_email"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/gilroy_f"
             android:layout_marginBottom="@dimen/margin_label_bottom"
             android:text="@string/textview_email"
             android:textColor="@color/white"/>
@@ -46,6 +50,7 @@
             android:id="@+id/registration_EditText_email"
             android:inputType="textEmailAddress"
             android:layout_height="40dp"
+            android:fontFamily="@font/gilroy_f"
             android:layout_width="match_parent"
             android:layout_marginBottom="@dimen/margin_bottom"
             android:background="@drawable/text_edit_shape"
@@ -55,6 +60,7 @@
             android:labelFor="@id/registration_EditText_password"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/gilroy_f"
             android:layout_marginBottom="@dimen/margin_label_bottom"
             android:text="@string/textview_password"
             android:textColor="@color/white"/>
@@ -62,6 +68,7 @@
             android:id="@+id/registration_EditText_password"
             android:inputType="textPassword"
             android:layout_height="40dp"
+            android:fontFamily="@font/gilroy_f"
             android:layout_width="match_parent"
             android:layout_marginBottom="@dimen/margin_bottom"
             android:background="@drawable/text_edit_shape"
@@ -71,6 +78,7 @@
             android:labelFor="@id/registration_EditText_repeatPassword"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/gilroy_f"
             android:layout_marginBottom="@dimen/margin_label_bottom"
             android:text="@string/registration_TextView_repeatPassword"
             android:textColor="@color/white"/>
@@ -78,6 +86,8 @@
             android:id="@+id/registration_EditText_repeatPassword"
             android:inputType="textPassword"
             android:layout_height="40dp"
+
+            android:fontFamily="@font/gilroy_f"
             android:layout_width="match_parent"
             android:background="@drawable/text_edit_shape"
             android:layout_marginBottom="@dimen/margin_bottom"
@@ -87,6 +97,7 @@
             android:id="@+id/registration_Button_register"
             android:background="@drawable/form_btn_shape"
             android:textColor="@color/white"
+            android:fontFamily="@font/gilroy_f"
             android:layout_height="40dp"
             android:layout_marginTop="@dimen/margin_start_s"
             android:layout_width="match_parent"
@@ -95,6 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/gilroy_f"
             android:layout_marginTop="@dimen/margin_start_l"
             android:text="@string/registration_TextView_haveAlreadyRegistered"
             android:textColor="@color/white"/>
@@ -103,6 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/gilroy_f"
             android:textSize="@dimen/font_m"
             android:text="@string/registration_TextView_logIn"
             android:textColor="@color/white"/>

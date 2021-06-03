@@ -12,6 +12,8 @@
         android:textColor="@color/white"
         android:textSize="@dimen/font_m"
         android:textStyle="bold"
+        android:paddingBottom="@dimen/margin_label_bottom_s"
+        android:fontFamily="@font/gilroy_f"
         android:layout_marginStart="@dimen/margin_start_s"
         android:layout_marginEnd="@dimen/margin_start_s"/>
 
@@ -20,28 +22,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:textSize="@dimen/font_xs"
+        android:textSize="@dimen/font_s"
+        android:paddingBottom="@dimen/margin_bottom"
+        android:fontFamily="@font/gilroy_f"
         android:layout_marginStart="@dimen/margin_start_s"
         android:layout_marginEnd="@dimen/margin_start_s" />
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/margin_bottom">
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/single_movie_country"
         android:textColor="@color/white"
         android:textSize="@dimen/font_m"
+
         android:textStyle="bold"
+        android:fontFamily="@font/gilroy_f"
         android:layout_marginStart="@dimen/margin_start_s"
         android:layout_marginEnd="@dimen/margin_start_s"/>
 
     <TextView
         android:id="@+id/single_movie_country"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="@dimen/font_s"
+        android:fontFamily="@font/gilroy_f"
         android:layout_marginStart="@dimen/margin_start_s"
         android:layout_marginEnd="@dimen/margin_start_s"/>
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -50,6 +63,8 @@
         android:textColor="@color/white"
         android:textSize="@dimen/font_m"
         android:textStyle="bold"
+        android:paddingBottom="@dimen/margin_label_bottom_s"
+        android:fontFamily="@font/gilroy_f"
         android:layout_marginStart="@dimen/margin_start_s"
         android:layout_marginEnd="@dimen/margin_start_s"/>
 
@@ -59,6 +74,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="@dimen/font_s"
+        android:paddingBottom="@dimen/margin_bottom"
+        android:fontFamily="@font/gilroy_f"
         android:layout_marginStart="@dimen/margin_start_s"
         android:layout_marginEnd="@dimen/margin_start_s"/>
 
@@ -69,6 +86,8 @@
         android:textColor="@color/white"
         android:textSize="@dimen/font_m"
         android:textStyle="bold"
+        android:paddingBottom="@dimen/margin_label_bottom_s"
+        android:fontFamily="@font/gilroy_f"
         android:layout_marginStart="@dimen/margin_start_s"
         android:layout_marginEnd="@dimen/margin_start_s"/>
 
@@ -77,6 +96,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
+        android:fontFamily="@font/gilroy_f"
         android:textSize="@dimen/font_s"
         android:layout_marginStart="@dimen/margin_start_s"
         android:layout_marginEnd="@dimen/margin_start_s"/>

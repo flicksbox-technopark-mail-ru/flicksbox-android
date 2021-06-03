@@ -8,7 +8,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/page_margin_bottom">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -38,6 +39,7 @@
                     android:id="@+id/profile_label_nickname_val"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_f"
                     android:paddingTop="@dimen/margin_start_s"
                     android:paddingBottom="@dimen/margin_start_s"
                     android:text="@string/user_name"
@@ -52,6 +54,7 @@
                     android:paddingTop="@dimen/margin_start_s"
                     android:paddingBottom="@dimen/margin_start_s"
                     android:text="@string/email"
+                    android:fontFamily="@font/gilroy_f"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="@dimen/font_m" />
@@ -62,6 +65,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/form_btn_shape"
                     android:textColor="@color/white"
+                    android:fontFamily="@font/gilroy_f"
                     android:text="@string/profile_logout_button"
                     android:minWidth="100dp"
                     android:minHeight="50dp"
@@ -97,6 +101,7 @@
                         android:paddingBottom="@dimen/margin_start_s"
                         android:text="@string/subscription"
                         android:textAlignment="center"
+                        android:fontFamily="@font/gilroy_f"
                         android:textColor="@color/white"
                         android:textSize="@dimen/font_m"
                         app:layout_constraintStart_toStartOf="parent"
@@ -108,6 +113,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_start_s"
                         android:gravity="center"
+                        android:fontFamily="@font/gilroy_f"
                         android:text="@string/subscription_status_no_sub"
                         android:textAlignment="center"
                         android:textColor="@color/white"
@@ -124,6 +130,7 @@
                         android:background="@drawable/form_btn_shape"
                         android:text="@string/subscribe"
                         android:textColor="@color/white"
+                        android:fontFamily="@font/gilroy_f"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
@@ -146,6 +153,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/profile"
+                        android:fontFamily="@font/gilroy_f"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="@dimen/font_m" />
@@ -155,6 +163,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
+                        android:fontFamily="@font/gilroy_f"
                         android:layout_marginBottom="@dimen/margin_label_bottom_s"
                         android:text="@string/user_name"
                         android:textAlignment="textStart"
@@ -165,6 +174,7 @@
                         android:id="@+id/profile_input_nickname"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        android:fontFamily="@font/gilroy_f"
                         android:layout_marginBottom="@dimen/margin_bottom"
                         android:background="@drawable/text_edit_shape"
                         android:textAlignment="textStart"
@@ -180,12 +190,14 @@
                         android:text="@string/email"
                         android:textAlignment="textStart"
                         android:textColor="@color/white"
+                        android:fontFamily="@font/gilroy_f"
                         android:textSize="@dimen/font_m" />
 
                     <EditText
                         android:id="@+id/profile_input_email"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        android:fontFamily="@font/gilroy_f"
                         android:background="@drawable/text_edit_shape"
                         android:textAlignment="textStart"
                         android:textSize="@dimen/font_m" />
@@ -195,6 +207,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="@dimen/margin_bottom"
+                        android:fontFamily="@font/gilroy_f"
                         android:background="@drawable/form_btn_shape"
                         android:text="@string/save_changes"
                         android:textColor="@color/white"
@@ -220,6 +233,7 @@
                         android:text="@string/security"
                         android:textAlignment="center"
                         android:textColor="@color/white"
+                        android:fontFamily="@font/gilroy_f"
                         android:textSize="@dimen/font_m" />
 
                     <TextView
@@ -230,12 +244,14 @@
                         android:text="@string/old_password"
                         android:textAlignment="textStart"
                         android:textColor="@color/white"
+                        android:fontFamily="@font/gilroy_f"
                         android:textSize="@dimen/font_m" />
 
                     <EditText
                         android:id="@+id/profile_input_old_password"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        android:fontFamily="@font/gilroy_f"
                         android:background="@drawable/text_edit_shape"
                         android:inputType="textPassword"
                         android:textAlignment="textStart"
@@ -249,6 +265,7 @@
                         android:layout_marginBottom="@dimen/margin_label_bottom_s"
                         android:text="@string/new_password"
                         android:textAlignment="textStart"
+                        android:fontFamily="@font/gilroy_f"
                         android:textColor="@color/white"
                         android:textSize="@dimen/font_m" />
 
@@ -256,6 +273,7 @@
                         android:id="@+id/profile_input_new_password"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        android:fontFamily="@font/gilroy_f"
                         android:background="@drawable/text_edit_shape"
                         android:inputType="textPassword"
                         android:textAlignment="textStart"
@@ -269,6 +287,7 @@
                         android:layout_marginBottom="@dimen/margin_label_bottom_s"
                         android:text="@string/repeat_password"
                         android:textAlignment="textStart"
+                        android:fontFamily="@font/gilroy_f"
                         android:textColor="@color/white"
                         android:textSize="@dimen/font_m" />
 
@@ -276,6 +295,7 @@
                         android:id="@+id/profile_input_repeat_password"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        android:fontFamily="@font/gilroy_f"
                         android:background="@drawable/text_edit_shape"
                         android:inputType="textPassword"
                         android:textAlignment="textStart"
@@ -285,6 +305,7 @@
                         android:id="@+id/profile_btn_change_password"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        android:fontFamily="@font/gilroy_f"
                         android:layout_marginTop="@dimen/margin_bottom"
                         android:background="@drawable/form_btn_shape"
                         android:text="@string/change_password_btn"

@@ -1,11 +1,13 @@
 package ru.flicksbox.movie.presentation.main
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Dispatchers
@@ -22,6 +24,14 @@ import ru.flicksbox.movie.presentation.single.MovieClickListener
 import ru.flicksbox.movie.presentation.single.SingleMovieFragment
 
 class MainFragment : Fragment(), MovieClickListener {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val inflater = TransitionInflater.from(requireContext())
+        enterTransition = inflater.inflateTransition(R.transition.fade_in)
+        exitTransition = inflater.inflateTransition(R.transition.fade_out)
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -77,10 +87,10 @@ class MainFragment : Fragment(), MovieClickListener {
     }
 
     override fun onMovieClick(movieID: Int) {
-        val fm = activity?.supportFragmentManager?.beginTransaction() ?: return
+        val fragmentTransaction = activity?.supportFragmentManager?.beginTransaction() ?: return
         val fragment = SingleMovieFragment.newInstance(movieID)
-        fm.replace(R.id.main_layout, fragment)
-        fm.addToBackStack(null).commit()
+        fragmentTransaction.replace(R.id.main_layout, fragment)
+        fragmentTransaction.addToBackStack(null).commit()
     }
 }
 

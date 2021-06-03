@@ -3,7 +3,9 @@
     <dimen name="margin_start_s">10dp</dimen>
     <dimen name="margin_start_l">30dp</dimen>
     <dimen name="margin_bottom">20dp</dimen>
+    <dimen name="page_margin_bottom">50dp</dimen>
     <dimen name="margin_end_s">8dp</dimen>
     <dimen name="margin_label_bottom_s">5dp</dimen>
     <dimen name="margin_label_bottom">10dp</dimen>
+    <dimen name="padding_card">3dp</dimen>
 </resources>

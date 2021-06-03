@@ -1,6 +1,7 @@
 package ru.flicksbox.movie.presentation.search
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +16,6 @@ import kotlinx.coroutines.flow.onEach
 import ru.flicksbox.App
 import ru.flicksbox.R
 import ru.flicksbox.data.Data
-import ru.flicksbox.movie.domain.FavouritesEntity
-import ru.flicksbox.movie.presentation.favourites.MovieViewData
 import ru.flicksbox.movie.presentation.favourites.toViewData
 import ru.flicksbox.movie.presentation.single.MovieClickListener
 import ru.flicksbox.movie.presentation.single.SingleMovieFragment
@@ -24,6 +23,13 @@ import ru.flicksbox.movie.presentation.single.SingleMovieFragment
 class SearchFragment : Fragment(), MovieClickListener, SearchQueryInputListener {
     private var adapter: SearchAdapter? = null
     private var lastQuery : String = ""
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val inflater = TransitionInflater.from(requireContext())
+        enterTransition = inflater.inflateTransition(R.transition.fade_in)
+        exitTransition = inflater.inflateTransition(R.transition.fade_out)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,10 +45,10 @@ class SearchFragment : Fragment(), MovieClickListener, SearchQueryInputListener 
     }
 
     override fun onMovieClick(movieID: Int) {
-        val fm = activity?.supportFragmentManager?.beginTransaction() ?: return
+        val fragmentTransaction = activity?.supportFragmentManager?.beginTransaction() ?: return
         val fragment = SingleMovieFragment.newInstance(movieID)
-        fm.replace(R.id.search_fragment_layout, fragment)
-        fm.addToBackStack(null).commit()
+        fragmentTransaction.replace(R.id.search_fragment_layout, fragment)
+        fragmentTransaction.addToBackStack(null).commit()
     }
 
     override fun onSearchQueryInput(query: String) {
