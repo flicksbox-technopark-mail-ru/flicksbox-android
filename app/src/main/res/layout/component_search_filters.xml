@@ -14,7 +14,9 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:fontFamily="@font/gilroy_f"
-        android:id="@+id/search_sort_year_button">
+        android:id="@+id/search_sort_year_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
     </androidx.appcompat.widget.AppCompatButton>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -27,7 +29,9 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:text="@string/search_sort_rating_button"
-        android:id="@+id/search_sort_rating_button">
+        android:id="@+id/search_sort_rating_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
     </androidx.appcompat.widget.AppCompatButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
